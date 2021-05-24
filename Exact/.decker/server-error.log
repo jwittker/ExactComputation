@@ -1,0 +1,12 @@
+[05/May/2021:16:23:54 +0200] Exception leaked to httpSession during phase 'sending-response': 
+During processing of request from 127.0.0.1:50348
+request:
+"GET /audio/wildbach.mp3 HTTP/1.1\nrange: bytes=0-\naccept-language: de-DE,de;q=0.9,en-US;q=0.8,en;q=0.7\nreferer: http://localhost:8888/example-deck.html\nsec-fetch-dest: audio\nsec-fetch-mode: no-cors\nsec-fetch-site: same-origin\naccept: */*\nuser-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36\nsec-ch-ua-mobile: ?0\naccept-encoding: identity;q=1, *;q=0\nsec-ch-ua: \" Not A;Brand\";v=\"99\", \"Chromium\";v=\"90\"\nconnection: keep-alive\nhost: localhost:8888\n\nsn=\"localhost:8888\" c=127.0.0.1:50348 s=127.0.0.1:8888 ctx=/ clen=n/a"
+A web handler threw an exception. Details:
+sendfile: resource vanished (Broken pipe)
+[05/May/2021:16:23:54 +0200] Exception leaked to httpSession during phase 'user handler': 
+During processing of request from 127.0.0.1:50348
+request:
+"GET /audio/wildbach.mp3 HTTP/1.1\nrange: bytes=0-\naccept-language: de-DE,de;q=0.9,en-US;q=0.8,en;q=0.7\nreferer: http://localhost:8888/example-deck.html\nsec-fetch-dest: audio\nsec-fetch-mode: no-cors\nsec-fetch-site: same-origin\naccept: */*\nuser-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36\nsec-ch-ua-mobile: ?0\naccept-encoding: identity;q=1, *;q=0\nsec-ch-ua: \" Not A;Brand\";v=\"99\", \"Chromium\";v=\"90\"\nconnection: keep-alive\nhost: localhost:8888\n\nsn=\"localhost:8888\" c=127.0.0.1:50348 s=127.0.0.1:8888 ctx=/ clen=n/a"
+A web handler threw an exception. Details:
+TerminateSessionException sendfile: resource vanished (Broken pipe)

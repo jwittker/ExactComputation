@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/PR-SVG-20010719/DTD/svg10.dtd">
+<svg width="40cm" height="36cm" viewBox="160 59 781 712" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <g id="Hintergrund">
+    <image x="160" y="60" width="769" height="711" xlink:href="FinitePrecisionLine.png"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke-linejoin: round; stroke: #ff0000" x="580" y="60" width="360" height="300" rx="10" ry="10"/>
+  </g>
+</svg>

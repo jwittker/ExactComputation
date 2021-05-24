@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<!-- This is the pandoc 2.7.3 template for reveal.js output modified for decker. -->
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="dcterms.date" content="2019-10-28">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <title>Decker Slide Tool Reference Guide</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="stylesheet" href="support/vendor/reveal/css/reset.css">
+  <link rel="stylesheet" href="support/vendor/reveal/css/reveal.css">
+  <link rel="stylesheet" href="support/plugins/whiteboard/whiteboard.css">
+  <link rel="stylesheet" href="support/plugins/menu/menu.css">
+  <style>
+        /* This is the global style block for decker's layout css variables (aka css custom properties) 
+        for all kinds of parameterization. Variables are set via an according YAML variable 
+        which defaults from the default.yaml. 
+        Can't be sourced out to external css file since variable substitution is performed
+        by pandoc which does not process the css */
+
+        :root {
+                /* This is the global variable for the default alignment. Defaults to left.    */
+                /* Can be overriden in local YAML and for whole slides or individual elements  */
+                --align-global: left;
+                /* Column spacing, in same awkward unit as reveal's margin which is fraction of 
+                space. Beware, does strange things if set too large. */
+                --margin-columns: calc(0em * 100%);
+                /* Now all the different font sizes */
+                --font-size-base: 28px;
+                --font-size-medium: calc(var(--font-size-base) * 1);
+                --font-size-xx-small: calc(var(--font-size-base) * 0.4);
+                --font-size-x-small: calc(var(--font-size-base) * 0.6);
+                --font-size-small: calc(var(--font-size-base) * 0.8);
+                --font-size-large: calc(var(--font-size-base) * 1.2);
+                --font-size-x-large: calc(var(--font-size-base) * 1.4);
+                --font-size-xx-large: calc(var(--font-size-base) * 1.6);
+                /* This one defines the basic vertical spacing between elements */
+                --spacing-vertical-base: 0.5em;
+                --margin-bottom-elements-base: 0.5em;
+                --margin-bottom-h1: calc(var(--margin-bottom-elements-base) * 1);
+                --margin-bottom-h2: calc(var(--margin-bottom-elements-base) * 0);
+                --margin-bottom-h2-block: calc(var(--margin-bottom-elements-base) * 0.8);
+                --margin-bottom-h3: calc(var(--margin-bottom-elements-base) * 0);
+                --margin-bottom-h3-block: calc(var(--margin-bottom-elements-base) * 0.8);
+                --margin-bottom-p: calc(var(--margin-bottom-elements-base) * 0.8);
+                --margin-bottom-ol: calc(var(--margin-bottom-elements-base) * 0.8);
+                --margin-bottom-ul: calc(var(--margin-bottom-elements-base) * 0.8);
+                --margin-bottom-dl: calc(var(--margin-bottom-elements-base) * 0.8);
+                --margin-bottom-figure: calc(var(--margin-bottom-elements-base) * 0.8);
+                --margin-bottom-img: calc(var(--margin-bottom-elements-base) * 0.8);
+                --margin-bottom-blockquote: calc(var(--margin-bottom-elements-base) * 0.8);
+                --margin-bottom-table: calc(var(--margin-bottom-elements-base) * 1);
+                --margin-bottom-columns: calc(var(--margin-bottom-elements-base) * 0);       
+                --margin-bottom-references: calc(var(--margin-bottom-elements-base) * 0.3);
+                /* The next custom properties for the look of the decoration */
+                --border-decoration-width: 20px;
+                --border-decoration-padding: 10px;
+                --border-decoration-style: solid;  
+                /* whiteboard buttons */
+                --whiteboard-icon-size: 2vmin;
+                --whiteboard-active-color: rgb(42,157,223);
+                --whiteboard-inactive-color: lightgrey;
+                --whiteboard-background-color: rgb(250,250,250);      
+        } 
+  </style>
+   
+  <style>
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style>
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="support/plugins/explain/explain.css">
+  <link rel="stylesheet" href="support/vendor/videojs/video-js.min.css">
+      <link rel="stylesheet" href="support/css/decker.css">
+        <link rel="stylesheet" href="custom.css"/>
+  <script>
+    /* Store JSON encoded Pandoc meta data in a global variable for easy
+    reference from any script. */
+    window.Decker = {meta: {"fragmentInURL":true,"controls":true,"border-decoration-padding":"10px","hideCursorTime":"2000.0","transition":"none","chalkboard":"example-deck.json","hash":true,"history":false,"progress":true,"border-decoration-width":"20px","center":true,"whiteboard-inactive-color":"lightgrey","whiteboard-icon-size":"2vmin","menu":true,"overview":true,"margin":"5.0e-2","spacing-vertical-base":"0.5em","bibliography":"./exact.bib","margin-columns":"0em","test123":"test123","help":true,"provisioning":"Copy","hideInactiveCursor":true,"backgroundTransition":"none","date":"2019-10-28","csl":"./chicago-author-date.csl","whiteboard-active-color":"rgb(42,157,223)","rsync-destination":{"path":"/some/path","host":"git@gitlab2.informatik.uni-wuerzburg.de"},"zoom":true,"keyboard":true,"touch":true,"title":"Decker Slide Tool Reference Guide","template":{"css":"custom.css"},"dictionary":{"de":{"quiz":{"qmi-drop-hint":"...und hier in die richtige Kategorie einsortieren.","solve-button":"Lösung","reset-button":"Zurücksetzen","input-placeholder":"Eingeben und 'Enter'","qmi-drag-hint":"Objekte per Drag&amp;Drop ziehen...","solution":"Lösung"},"exam":{"points":"Punkte","Medium":"Mittelschwer","solve-button":"Lösen","Easy":"Leicht","reset-button":"Zurücksetzen","Hard":"Schwer","again-button":"Nochmal","placeholder":"Antwort eingeben","solution":"Lösung"}},"en":{"quiz":{"qmi-drop-hint":"...and put them here into the correct category.","reset-button":"Reset","solution-button":"Show Solution","input-placeholder":"Type and press 'Enter'","qmi-drag-hint":"Drag items from here...","solution":"Show Solution"},"exam":{"points":"Points","Medium":"Medium","solve-button":"Solve","Easy":"Easy","reset-button":"Reset","Hard":"Hard","again-button":"Again","placeholder":"Type in answer","solution":"Solution"}}},"align-global":"left","vertical-slides":true,"font-size-base":"28px","fragments":true,"whiteboard-background-color":"rgb(250,250,250)","border-decoration-style":"solid"}};
+  </script>
+
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? String.raw`support/vendor/reveal/css/print/pdf.css` : String.raw`support/vendor/reveal/css/print/paper.css`;
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="https://unpkg.com/reveal.js@^4//lib/js/html5shiv.js"></script>
+  <![endif]-->
+
+</head>
+<body data-deckid="">
+  <div class="reveal">
+    <div class="slides">
+
+    <!-- standard settings -->
+               <section id="title-slide" class="title-page">
+              <div class="valign-block">
+            <div class="valigned">
+                <div class="title"> Decker Slide Tool Reference Guide</div>
+                                                   <div style="height:100px"> </div>      
+                                                   <div class="date"> 2019-10-28 </div>
+                                                                 
+            </div>
+        </div>
+         </section>      
+   
+
+
+<section id="navigation" class="slide level1">
+<h1>Navigation</h1>
+<p>Navigate this presentation with the controls in the bottom-right corner, your arrow keys or the space bar.</p>
+<p>Some explanations have examples on a separate slide. These will be arranged below the respective slide and will be indicated by a down arrow in the controls. Use the down arrow key to see them. If you use the space bar to go through the presentation, the examples will automatically follow their explanation.</p>
+<p>The <i class="fas fa-bars"></i> icon in the bottom-left corner opens a menu showing a table of contents of all slides.</p>
+</section>
+<section id="syntax" class="slide level1">
+<h1>Markdown Syntax</h1>
+<p>The Decker Slide Tool assists you in creating media-rich presentations with a few easy to use Markdown commands. This user guide will highlight some of the main styling features of Decker and provide examples on how to use each feature.</p>
+<p>Visit <a href="http://pandoc.org" class="uri">http://pandoc.org</a> for additional information on Pandoc-Markdown text formatting.</p>
+</section>
+<section id="slides" class="slide level1">
+<h1>New Slides</h1>
+<p>Heading 1 (h1) headers create new slides.</p>
+<div class="css-columns">
+<div class="box columns split">
+<h2 class="split" id="section"></h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Heading 1 (h1) new slide</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">## Heading 2 (h2)</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">### Heading 3 (h3)</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Heading 4 (h4)</span></span></code></pre></div>
+</div>
+<div class="box columns">
+<h2 id="section-1"></h2>
+</div>
+<div class="box columns">
+<h2 id="heading-2-h2">Heading 2 (h2)</h2>
+<h3 id="heading-3-h3">Heading 3 (h3)</h3>
+<h4 id="heading-4-h4">Heading 4 (h4)</h4>
+</div>
+</div>
+</section>
+<section id="multicolumn" class="slide level1">
+<h1>Multicolumn Slides</h1>
+<div class="sourceCode" id="cb2"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Würzburg Sehenswürdigkeiten {layout=&quot;columns&quot;}</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">## Die Residenz {.left}</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>Die Würzburger Residenz ist das Hauptwerk des ...</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">## Alte Mainbrücke {.center}</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>Diese erste Steinbrücke Deutschlands soll bereits um ...</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="fu">## Dom St. Kilian {.right}</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>Ein Hauptwerk der deutschen Baukunst zur Zeit der ...</span></code></pre></div>
+</section>
+<section id="example-multicolumn" class="slide level1" data-layout="columns">
+<h1 data-layout="columns">Multicolumn example</h1>
+<div class="multi-column-row multi-column-row-3">
+<div class="grow-1 column column-1">
+<div class="box columns left">
+<h2 class="left" id="die-residenz">Die Residenz</h2>
+<p>Die Würzburger Residenz ist das Hauptwerk des süddeutschen Barock.</p>
+</div>
+</div>
+<div class="grow-1 column column-2">
+<div class="box columns center">
+<h2 class="center" id="alte-mainbrücke">Alte Mainbrücke</h2>
+<p>Die erste Steinbrücke Deutschlands soll bereits um 1120 errichtet worden sein.</p>
+</div>
+</div>
+<div class="grow-1 column column-3">
+<div class="box columns right">
+<h2 class="right" id="dom-st.-kilian">Dom St. Kilian</h2>
+<p>Ein Hauptwerk der deutschen Baukunst und viertgrößte romanische Kirche Deutschlands.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="topBottom" class="slide level1">
+<h1>Top and Bottom</h1>
+<p>Additionally use the <code>.top</code> and <code>.bottom</code> tags can be used.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Top and Bottom Example {layout=&quot;columns&quot;}</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">## Top Colum {.top}</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>First/top column spans across the following columns.</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">## Left Column {.left}</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="fu">## Right Column {.right}</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="fu">## Third Column {.bottom}</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>Third/bottom column spans across the columns above.</span></code></pre></div>
+</section>
+<section id="example-topBottom" class="slide level1" data-layout="columns">
+<h1 data-layout="columns">Top and Bottom Example</h1>
+<div class="single-column-row">
+<div class="box columns top">
+<h2 class="top" id="top-colum">Top Colum</h2>
+<p>First/top column spans across the following columns.</p>
+</div>
+</div>
+<div class="multi-column-row multi-column-row-3">
+<div class="grow-1 column column-1">
+<div class="box columns left">
+<h2 class="left" id="left-column">Left Column</h2>
+</div>
+</div>
+<div class="grow-1 column column-3">
+<div class="box columns right">
+<h2 class="right" id="right-column">Right Column</h2>
+</div>
+</div>
+</div>
+<div class="single-column-row">
+<div class="box columns bottom">
+<h2 class="bottom" id="third-column">Third Column</h2>
+<p>Third/bottom column spans across the columns above.</p>
+</div>
+</div>
+</section>
+<section id="textEmphasis" class="slide level1">
+<h1>Text Emphasis</h1>
+<p>Format text by surrounding it in appropriate symbols:</p>
+<div class="css-columns">
+<div class="box columns split">
+<h2 class="split" id="section-2"></h2>
+<div class="sourceCode" id="cb4"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>**This is bold text**</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>__This is bold text__</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>*This is italic text*</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>_This is italic text_</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>~~Strikethrough~~</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;u&gt;</span>underline<span class="kw">&lt;/u&gt;</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>~subscript~</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>^superscript^</span></code></pre></div>
+</div>
+<div class="box columns">
+<h2 id="section-3"></h2>
+<p><strong>This is bold text</strong><br />
+<strong>This is bold text</strong><br />
+<em>This is italic text</em><br />
+<em>This is italic text</em><br />
+<del>Strikethrough</del><br />
+<u>underline</u><br />
+H<sub>2</sub>O is a liquid.<br />
+2<sup>3</sup> equals 8.</p>
+</div>
+</div>
+</section>
+<section id="inverse" class="slide level1 inverse" data-background-color="black">
+<h1 class="inverse" data-background-color="black">Inverse Colors</h1>
+<div class="box columns">
+<h2 id="color-scheme-for-dark-images">Color Scheme for Dark Images</h2>
+<ul>
+<li>Add <code>.inverse</code> tag to slide header (h1)</li>
+<li>Add <code>background-color="black"</code> to slide header (h1)</li>
+</ul>
+</div>
+<div class="box columns fragment definition">
+<h2 class="definition" id="definition-box">Definition Box</h2>
+<p>Even colored boxes look ok.</p>
+</div>
+</section>
+<section id="blocks" class="slide level1">
+<h1>Highlight Blocks</h1>
+<div class="css-columns">
+<div class="box columns split" style="font-size:small">
+<h2 class="split" style="font-size:small" id="section-4"></h2>
+<div class="sourceCode" id="cb5"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">## Alert Block {.alert}</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="ss">-  </span>Alert Text</span></code></pre></div>
+</div>
+<div class="box columns" style="font-size:small">
+<h2 style="font-size:small" id="section-5"></h2>
+<div class="sourceCode" id="cb6"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">## Question Block {.question}</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="ss">-  </span>Question text</span></code></pre></div>
+</div>
+<div class="box columns" style="font-size:small">
+<h2 style="font-size:small" id="section-6"></h2>
+<div class="sourceCode" id="cb7"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">## Answer Block {.answer}</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="ss">-  </span>Answer text</span></code></pre></div>
+</div>
+<div class="box columns" style="font-size:small">
+<h2 style="font-size:small" id="section-7"></h2>
+<div class="sourceCode" id="cb8"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">## Definition Block {.definition}</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="ss">-  </span>Definition text</span></code></pre></div>
+</div>
+<div class="box columns" style="font-size:small">
+<h2 style="font-size:small" id="section-8"></h2>
+<div class="sourceCode" id="cb9"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">## Observation Block {.observation}</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="ss">-  </span>Observation text</span></code></pre></div>
+</div>
+<div class="box columns" style="font-size:small">
+<h2 style="font-size:small" id="section-9"></h2>
+<div class="sourceCode" id="cb10"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">## Example Block {.example}</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="ss">-  </span>Example text</span></code></pre></div>
+</div>
+<div class="box columns" style="font-size:small">
+<h2 style="font-size:small" id="section-10"></h2>
+<div class="sourceCode" id="cb11"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">## Equation Block {.equation}</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="ss">-  </span>Equation text</span></code></pre></div>
+</div>
+<div class="box columns" style="font-size:small">
+<h2 style="font-size:small" id="section-11"></h2>
+<div class="sourceCode" id="cb12"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">## Note Block {.note}</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="ss">-  </span>Note text</span></code></pre></div>
+</div>
+</div>
+</section>
+<section id="example-blocks" class="slide level1">
+<h1>Highlight Blocks example</h1>
+<div class="css-columns">
+<div class="box columns alert split">
+<h2 class="alert split" id="alert-block">Alert Block</h2>
+<ul>
+<li>Alert Text</li>
+</ul>
+</div>
+<div class="box columns question">
+<h2 class="question" id="question-block">Question Block</h2>
+<ul>
+<li>Question text</li>
+</ul>
+</div>
+<div class="box columns answer">
+<h2 class="answer" id="answer-block">Answer Block</h2>
+<ul>
+<li>Answer text</li>
+</ul>
+</div>
+<div class="box columns definition">
+<h2 class="definition" id="definition-block">Definition Block</h2>
+<ul>
+<li>Definition text</li>
+</ul>
+</div>
+<div class="box columns observation">
+<h2 class="observation" id="observation-block">Observation Block</h2>
+<ul>
+<li>Observation text</li>
+</ul>
+</div>
+<div class="box columns example">
+<h2 class="example" id="example-block">Example Block</h2>
+<ul>
+<li>Example text</li>
+</ul>
+</div>
+<div class="box columns equation">
+<h2 class="equation" id="equation-block">Equation Block</h2>
+<ul>
+<li>Equation text</li>
+</ul>
+</div>
+<div class="box columns note">
+<h2 class="note" id="note-block">Note Block</h2>
+<ul>
+<li>Note text</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="lists" class="slide level1">
+<h1>Lists</h1>
+<div class="css-columns">
+<div class="box columns split">
+<h2 class="split" id="ordered-lists">Ordered Lists</h2>
+<div class="sourceCode" id="cb13"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>bread</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>milk</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>sugar</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="ss">4.  </span>flour</span></code></pre></div>
+</div>
+<div class="box columns example">
+<h2 class="example" id="section-12"></h2>
+<ol type="1">
+<li>bread</li>
+<li>milk</li>
+<li>sugar</li>
+<li>flour</li>
+</ol>
+</div>
+<div class="box columns">
+<h2 id="enumerated-lists">Enumerated Lists</h2>
+<div class="sourceCode" id="cb14"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ss">-  </span>Take out trash</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="ss">-  </span>Vaccuum</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>Bedrooms</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="ss">-  </span>Wash dishes</span></code></pre></div>
+</div>
+<div class="box columns example">
+<h2 class="example" id="section-13"></h2>
+<ul>
+<li>Take out trash</li>
+<li>Vaccuum
+<ul>
+<li>Bedrooms</li>
+</ul></li>
+<li>Wash dishes</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="seqlists" class="slide level1">
+<h1>Sequential Lists</h1>
+<p>Use the (@) symbol to automatically number items in a list.<br />
+Numbered examples do not need to be in a single list.</p>
+<div class="box columns" style="font-size:small;">
+<h2 style="font-size:small;" id="section-14"></h2>
+<div class="sourceCode" id="cb15"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>(@)  Salman Rushdie, *The Ground beneath Her Feet* (New York: Henry Holt, 1999), 25.  </span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>(@)  Bob Stewart, &quot;Wag of the Tail: Reflecting on Pet Ownership,&quot; in *Enriching Our</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  Lives with Animals*, ed. John Jaimeson, Tony Bannerman and Selena Wong</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  (Toronto, ON: Petlove Press, 2007),100.  </span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>Additional sources:  </span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>(@)  Elliot Antokoletz, *Musical Symbolism in the Operas of Debussy and Bartok*</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>  (New York: Oxford University Press, 2008),</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>  doi:10.1093/acprof:oso/9780195365825.001.0001.</span></code></pre></div>
+</div>
+</section>
+<section id="example-seqlists" class="slide level1">
+<h1>Sequential Lists example</h1>
+<ol type="1">
+<li><p>Salman Rushdie, <em>The Ground beneath Her Feet</em> (New York: Henry Holt, 1999), 25.</p></li>
+<li><p>Bob Stewart, “Wag of the Tail: Reflecting on Pet Ownership,” in <em>Enriching Our Lives with Animals</em>, ed. John Jaimeson, Tony Bannerman and Selena Wong (Toronto, ON: Petlove Press, 2007),100.</p></li>
+</ol>
+<p>Additional sources:</p>
+<ol start="3" type="1">
+<li>Elliot Antokoletz, <em>Musical Symbolism in the Operas of Debussy and Bartok</em> (New York: Oxford University Press, 2008), doi:10.1093/acprof:oso/9780195365825.001.0001.</li>
+</ol>
+</section>
+<section id="links" class="slide level1">
+<h1>Links</h1>
+<p>Enter the text to be displayed followed by the URL or slide ID.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">text-to-be-displayed</span><span class="co">](https://url-of-website)</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">text-to-be-displayed</span><span class="co">](#slide-id)</span></span></code></pre></div>
+<p><em>Note:</em> Slide IDs are entered on the slide header (h1) as follows:</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Slide Title {#slide-id}</span></span></code></pre></div>
+</section>
+<section id="example-links" class="slide level1">
+<h1>Links example</h1>
+<div class="box columns" style="font-size:small;">
+<h2 style="font-size:small;" id="section-15"></h2>
+<pre><code>Visit [http://pandoc.org](http://pandoc.org) for additional information.
+
+Read more about building [lists](#lists) in Decker.</code></pre>
+</div>
+<div class="box columns">
+<h2 id="section-16"></h2>
+</div>
+<div class="box columns example">
+<h2 class="example" id="section-17"></h2>
+<p>Visit <a href="http://pandoc.org" class="uri">http://pandoc.org</a> for additional information.<br />
+Read more about building <a href="#/lists">lists</a> in Decker.</p>
+</div>
+</section>
+<section id="images" class="slide level1">
+<h1>Images</h1>
+<p>Include images in presentations:</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="al">![Image Caption](image-file-location)</span>{css-formatting}</span></code></pre></div>
+</section>
+<section id="example-images" class="slide level1">
+<h1>Images example</h1>
+<div class="box columns">
+<h2 id="section-18"></h2>
+<div class="sourceCode" id="cb20"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="al">![Haskell](img/haskell.png)</span>{width=&quot;30%&quot;}</span></code></pre></div>
+</div>
+<div class="box columns">
+<h2 id="section-19"></h2>
+<figure class="decker" alt="haskell.png" style="width:30%;"><img class="decker" data-src="img/haskell.png"><figcaption class="decker">Haskell</figcaption></figure>
+</div>
+</section>
+<section id="video" class="slide level1">
+<h1>Videos</h1>
+<p>Include videos in presentations:</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="al">![title](video-file-location)</span>{css-formatting}</span></code></pre></div>
+</section>
+<section id="example-movies_1" class="slide level1">
+<h1>Videos example</h1>
+<div class="sourceCode" id="cb22"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="an">Video with controls:</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="al">![](movies/jmu-hci-intro.mp4)</span>{.controls}</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>Video with autoplay:</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="al">![](movies/jmu-hci-intro.mp4)</span>{.autoplay}</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>Start video at timestamp:</span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a><span class="al">![](movies/jmu-hci-intro.mp4)</span>{.autoplay start=&quot;10&quot;}</span></code></pre></div>
+<div class="css-columns">
+<div class="box columns split">
+<h2 class="split" id="section-20"></h2>
+<p>Video with controls: <video class="decker" data-src="movies/jmu-hci-intro.mp4" controls="controls"></video></p>
+</div>
+<div class="box columns">
+<h2 id="section-21"></h2>
+<p>Video with autoplay &amp; loop: <video class="decker" data-src="movies/jmu-hci-intro.mp4" loop="loop" allow="autoplay" data-autoplay="1"></video></p>
+</div>
+</div>
+</section>
+<section id="ext-vid" class="slide level1">
+<h1>External Videos</h1>
+<p>Include YouTube and Vimeo videos or Twitch channels in presentations:</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="al">![](service:video-id)</span>{css-formatting}</span></code></pre></div>
+<ul>
+<li><p>Replace <code>service</code> with <code>youtube</code>, <code>vimeo</code> or <code>twitch</code> and add video id or twitch channel name (replaces <code>video-id</code>).</p></li>
+<li><p>The video ID is usually found in the URL.</p></li>
+</ul>
+<p><strong>YouTube example URL:</strong> https://www.youtube.com/watch?v=<u>qEcmwHRG2Mo</u><br />
+<strong>YouTube video ID:</strong> qEcmwHRG2Mo</p>
+</section>
+<section id="example-movies_2" class="slide level1">
+<h1>External Videos example</h1>
+<div class="sourceCode" id="cb24"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="al">![](youtube:qEcmwHRG2Mo)</span>{width=&quot;65%&quot; start=&quot;10&quot;}</span></code></pre></div>
+<div class="decker nofigure streaming" style="width:65%;"><div style="position:relative;padding-top:25px;padding-bottom:56.25%;height:0;"><iframe allow="fullscreen" style="position:absolute;top:0;left:0;width:100%;height:100%;" data-src="https://www.youtube.com/embed/qEcmwHRG2Mo?cc_load_policy=0&controls=2&iv_load_policy=3&modestbranding=1&rel=0&showinfo=0&start=10"></iframe></div></div>
+</section>
+<section id="fullscreen" class="slide level1">
+<h1>Fullscreen Videos</h1>
+<p>Fullscreen videos are identified in the slide header:</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># ![](movies/jmu-hci-intro.mp4){.controls}</span></span></code></pre></div>
+<p><em>Note:</em> Do not include a slide title.</p>
+</section>
+<section id="example-movies_3" class="slide level1 controls" data-background-video="movies/jmu-hci-intro.mp4" data-menu-title="Fullscreen Videos Example">
+<h1 class="controls" data-background-video="movies/jmu-hci-intro.mp4" data-menu-title="Fullscreen Videos Example"> </h1>
+</section>
+<section id="audio" class="slide level1">
+<h1>Audio</h1>
+<p>Include audio clips in presentations:</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="al">![title](audio-file-location)</span>{css-formatting}</span></code></pre></div>
+</section>
+<section id="example-audio" class="slide level1 columns">
+<h1 class="columns">Audio example</h1>
+<div class="single-column-row">
+<div class="box columns top">
+<h2 class="top" id="section-22"></h2>
+<div class="sourceCode" id="cb27"><pre class="sourceCode markdown xxx-small"><code class="sourceCode markdown"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="an">Example 1:</span><span class="co"> audio with controls</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="al">![Wildbach](audio/wildbach.mp3)</span>{.controls}</span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode markdown xxx-small"><code class="sourceCode markdown"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="an">Example 2:</span><span class="co"> audio with controls, autoplay and muted</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="al">![Wildbach](audio/wildbach.mp3)</span>{.controls .autoplay .muted}</span></code></pre></div>
+</div>
+</div>
+<div class="multi-column-row multi-column-row-3">
+<div class="grow-1 column column-1">
+<div class="box columns left example">
+<h2 class="left example" id="section-23"></h2>
+<p>Example 1: <figure class="decker"><audio class="decker" data-src="audio/wildbach.mp3" controls="controls"></audio><figcaption class="decker">Wildbach</figcaption></figure></p>
+</div>
+</div>
+<div class="grow-1 column column-3">
+<div class="box columns right example">
+<h2 class="right example" id="section-24"></h2>
+<p>Example 2: <figure class="decker"><audio class="decker" data-src="audio/wildbach.mp3" controls="controls" muted="muted" allow="autoplay" data-autoplay="1"></audio><figcaption class="decker">Wildbach</figcaption></figure></p>
+</div>
+</div>
+</div>
+</section>
+<section id="tables" class="slide level1">
+<h1>Tables</h1>
+<p>Tables are created with pipes (|) and hyphens (-). Align text with colons (:) on the left, right, or on both sides of the hyphens in the header row.</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>| Right Align | Left Align | Center Align | Default |</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>|        ---: | :---       |    :---:     | ------- |</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>|        data | data       |     data     | data    |</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>|        data | data       |     data     | data    |</span></code></pre></div>
+</section>
+<section id="example-tables" class="slide level1">
+<h1>Tables example</h1>
+<div class="box columns" style="font-size:small;">
+<h2 style="font-size:small;" id="section-25"></h2>
+<div class="sourceCode" id="cb30"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="an">Table:</span><span class="co"> Assignment List</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>|  Week | Topic | Reading | Book |</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>|  ---: | :---  |  :---:  | ---- |</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>|   1   | Course Introduction | Chapt. 1 | Physics |</span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>|   2   | Inertia, Equilibrium, Kinematics | Chapt. 2-3| Physics |</span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>|   3   | Vectors, Momentum, Energy | Chapt. 4-7 | Physics |</span></code></pre></div>
+</div>
+<div class="box columns">
+<h2 id="section-26"></h2>
+</div>
+<div class="box columns example">
+<h2 class="example" id="section-27"></h2>
+<table>
+<caption>Assignment List</caption>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Week</th>
+<th style="text-align: left;">Topic</th>
+<th style="text-align: center;">Reading</th>
+<th>Book</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Course Introduction</td>
+<td style="text-align: center;">Chapt. 1</td>
+<td>Physics</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">Inertia, Equilibrium, Kinematics</td>
+<td style="text-align: center;">Chapt. 2, 3, 4</td>
+<td>Physics</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td style="text-align: left;">Vectors, Momentum, Energy</td>
+<td style="text-align: center;">Chapt. 5-8</td>
+<td>Physics</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="code" class="slide level1">
+<h1>Verbatim Code Blocks</h1>
+<p>To treat text as verbatim, either:</p>
+<ul>
+<li>surround text with three tildes ( ~ ) or backticks ( ` )<br />
+</li>
+<li>or indent each line by four spaces.</li>
+</ul>
+</section>
+<section id="example-code" class="slide level1">
+<h1>Verbatim Code Block example</h1>
+<div class="box columns" style="font-size:small;">
+<h2 style="font-size:small;" id="section-28"></h2>
+<div class="sourceCode" id="cb31"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="in">~~~java</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="op">(</span>a <span class="op">&gt;</span> <span class="dv">3</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">moveShip</span><span class="op">(</span><span class="dv">5</span> <span class="op">*</span> gravity<span class="op">,</span> DOWN<span class="op">);</span></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="op">~~~</span></span></code></pre></div>
+</div>
+<div class="box columns">
+<h2 id="section-29"></h2>
+<div class="sourceCode" id="cb32"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="op">(</span>a <span class="op">&gt;</span> <span class="dv">3</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">moveShip</span><span class="op">(</span><span class="dv">5</span> <span class="op">*</span> gravity<span class="op">,</span> DOWN<span class="op">);</span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+</div>
+</section>
+<section id="blockQuote" class="slide level1">
+<h1>Block Quotes</h1>
+<p>To quote a block of text, preceed each line with a (&gt;) character:</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; This is a block quote.</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="at">&gt;</span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; &gt; A block quote within a block quote.</span></span></code></pre></div>
+<blockquote>
+<p>This is a block quote.</p>
+<blockquote>
+<p>A block quote within a block quote.</p>
+</blockquote>
+</blockquote>
+</section>
+<section id="math" class="slide level1" data-layout="columns">
+<h1 data-layout="columns">Mathematics</h1>
+<div class="single-column-row">
+<div class="box columns top">
+<h2 class="top" id="section-30"></h2>
+<ul>
+<li>Single $ encloses inline math</li>
+<li>Double $$ encloses a display math block</li>
+</ul>
+</div>
+</div>
+<div class="multi-column-row multi-column-row-3">
+<div class="grow-1 column column-1">
+<div class="box columns left">
+<h2 class="left" id="section-31"></h2>
+<div class="sourceCode" id="cb34"><pre class="sourceCode latex"><code class="sourceCode latex"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>To <span class="ss">$</span><span class="sc">\infty</span><span class="ss">$</span> and beyond!</span></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode latex"><code class="sourceCode latex"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="ss">$$ e = mc ^ 2 $$</span></span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode latex"><code class="sourceCode latex"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">\lim</span>_{x <span class="fu">\to</span> <span class="fu">\infty</span>} <span class="fu">\exp</span>(-x) = 0</span></code></pre></div>
+</div>
+</div>
+<div class="grow-1 column column-3">
+<div class="box columns right">
+<h2 class="right" id="section-32"></h2>
+</div>
+<div class="box columns example">
+<h2 class="example" id="section-33"></h2>
+<p>To <span class="math inline">\(\infty\)</span> and beyond!</p>
+</div>
+<div class="box columns example">
+<h2 class="example" id="section-34"></h2>
+<p><span class="math display">\[ e = mc ^ 2 \]</span></p>
+</div>
+<div class="box columns example">
+<h2 class="example" id="section-35"></h2>
+<p><span class="math display">\[ \lim_{x \to \infty} \exp(-x) = 0 \]</span></p>
+</div>
+</div>
+</div>
+</section>
+<section id="java" class="slide level1">
+<h1>Java Syntax Highlighting</h1>
+<p>Apply Java syntax highlighting with the <code>.Java</code> tag.</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="in">~~~java</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="bu">String</span> s <span class="op">=</span> <span class="st">&quot;Java highlighting syntax&quot;</span><span class="op">;</span></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span> <span class="op">(</span>s<span class="op">);</span></span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a><span class="in">~~~</span></span></code></pre></div>
+<div class="box columns">
+<h2 id="section-36"></h2>
+<div class="sourceCode" id="cb38"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="bu">String</span> s <span class="op">=</span> <span class="st">&quot;Java highlighting syntax&quot;</span><span class="op">;</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span> <span class="op">(</span>s<span class="op">);</span></span></code></pre></div>
+</div>
+</section>
+<section id="javascript" class="slide level1">
+<h1>Javascript Syntax Highlighting</h1>
+<p>Apply Javascript syntax highlighting with the <code>.Javascript</code> tag.</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="in">~~~javascript</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="kw">var</span> s <span class="op">=</span> <span class="st">&quot;JavaScript syntax highlighting&quot;</span><span class="op">;</span></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="fu">alert</span> (s)<span class="op">;</span></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="op">~~~</span></span></code></pre></div>
+<div class="box columns">
+<h2 id="section-37"></h2>
+<div class="sourceCode" id="cb40"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="kw">var</span> s <span class="op">=</span> <span class="st">&quot;JavaScript syntax highlighting&quot;</span><span class="op">;</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="fu">alert</span> (s)<span class="op">;</span></span></code></pre></div>
+</div>
+</section>
+<section id="externalWebite" class="slide level1">
+<h1>Embed External Websites</h1>
+<ul>
+<li>Paste the following iframe on a blank slide<br />
+</li>
+<li>Change “https://www.uni-wuerzburg.de/” to your website</li>
+</ul>
+<div class="box columns">
+<h2 id="section-38"></h2>
+<div class="sourceCode" id="cb41"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;iframe</span><span class="ot"> class</span> <span class="ot">=</span> <span class="st">&quot;stretch&quot;</span><span class="ot"> src</span> <span class="ot">=</span> <span class="st">&quot;https://www.uni-wuerzburg.de/&quot;</span><span class="kw">&gt;&lt;/iframe&gt;</span></span></code></pre></div>
+</div>
+</section>
+<section id="example-externalWebsite" class="slide level1" data-menu-title="External Website Example">
+<h1 data-menu-title="External Website Example"></h1>
+<iframe class="stretch" src="https://www.uni-wuerzburg.de/">
+</iframe>
+</section>
+<section id="embedPDF" class="slide level1" style="font-size:small;">
+<h1 style="font-size:small;">Embed PDF documents</h1>
+<div class="sourceCode" id="cb42"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="al">![](http://pandoc.org/MANUAL.pdf)</span>{width=&quot;100%&quot; height=&quot;500px&quot;}</span></code></pre></div>
+<object class="decker" type="application/pdf" data="http://pandoc.org/MANUAL.pdf" style="width:100%;height:500px;"></object>
+<!-- The given path (../../resource/support/...) won't work; therefore I excluded this part for now
+# Embed JavaScript {#embedJavascript}
+
+![](webgl_geometry_minecraft_ao.html){.iframe width="100%" height="500px"}
+
+[](../../resource/support/three.js){.resource}
+
+# ![](webgl_geometry_minecraft_ao.html)
+-->
+</section>
+<section id="pdf-documents-in-header" class="slide level1">
+<h1>PDF Documents in Header</h1>
+<div class="sourceCode" id="cb43"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># ![](http://pandoc.org/MANUAL.pdf)</span></span></code></pre></div>
+</section>
+<section id="section-39" class="slide level1" data-background-iframe="http://pandoc.org/MANUAL.pdf">
+<h1 data-background-iframe="http://pandoc.org/MANUAL.pdf"> </h1>
+</section>
+<section id="chalkboard" class="slide level1">
+<h1>Chalkboard</h1>
+<p>Dynamically make notes on presentations:</p>
+<ul>
+<li>Make notes on slides: click <i class="fas fa-pen"></i> or type ‘d’</li>
+<li>Use an eraser: click <i class="fas fa-eraser"></i> or type ‘e’</li>
+<li>Show the chalkboard: click <i class="fas fa-edit"></i> or type ‘w’</li>
+<li>Draw on chalkboard: click <i class="fas fa-edit"></i> and then <i class="fas fa-pen"></i> or type ‘w’ and then ‘d’</li>
+<li>Clear the chalkboard: press the ‘Del’ key</li>
+<li>Download notes: type ‘n’</li>
+<li>Extend the chalkboard: open the chalkboard with drawing turned on (‘d’ and ‘w’) and press ENTER</li>
+</ul>
+</section>
+<section id="speakerNotes" class="slide level1">
+<h1>Speaker Notes</h1>
+<p>Slides with headers with the <code>.notes</code> tag are not included in a presentation. They only appear in the handout and in the speaker view (press <code>s</code> on this slide to access the speaker view).</p>
+<div class="box columns">
+<h2 id="section-40"></h2>
+<div class="sourceCode" id="cb44"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Why Gamify? {.notes}</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Games are among the most powerful motivational tools.</span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Make the non-game experience more rewarding.</span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Motivation has limits. A large leaderboard divide may</span>
+<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>  cause the player to abandon the game.</span></code></pre></div>
+</div>
+<aside class="notes">
+<h2>Why Gamify?</h2>
+<ul>
+<li><p>Games are among the most powerful motivational tools.</p></li>
+<li><p>Make the non-game experience more rewarding</p></li>
+<li><p>Motivation has limits. A large leaderboard divide may cause the player to abandon the game.</p>
+<ul>
+<li><a href="#/block-quotes">Blockquotes</a></li>
+<li><a href="#/line-blocks">Line Blocks</a></li>
+<li><a href="#/tags">Tags</a></li>
+</ul></li>
+</ul>
+</aside>
+</section>
+<section id="citations" class="slide level1">
+<h1>Citations</h1>
+<p>Add citations to your slide deck. Be sure to include a <code>csl</code> and a <code>bib</code> file in your <a href="#/yaml">YAML header</a>.</p>
+<div class="box columns" style="font-size:small;">
+<h2 style="font-size:small;" id="section-41"></h2>
+<div class="sourceCode" id="cb45"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">## Space Tentacles</span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>Have you heard about Space Tentacles <span class="co">[</span><span class="ot">@zimmerer2018space</span><span class="co">]</span>.</span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>According to @zimmerer2018space it is a nice idea.</span></code></pre></div>
+</div>
+<div class="box columns">
+<h2 id="space-tentacles">Space Tentacles</h2>
+<p>Have you heard about Space Tentacles <span class="citation" data-cites="zimmerer2018space">(Example, n.d.)</span>. According to <span class="citation" data-cites="zimmerer2018space">Example (n.d.)</span> it is a nice idea.</p>
+</div>
+</section>
+<section id="yaml" class="slide level1">
+<h1>Header Options</h1>
+<p>Add optional settings in the top of each markdown file.</p>
+<div class="box columns" style="font-size:small;">
+<h2 style="font-size:small;" id="section-42"></h2>
+<div class="sourceCode" id="cb46"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">center</span><span class="kw">:</span><span class="at"> 0 - Align slide content to the top</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="fu">center</span><span class="kw">:</span><span class="at"> 1 - Align slide content vertically (default)</span></span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a><span class="fu">controls</span><span class="kw">:</span><span class="at"> 0 - Display navigational arrows (default)</span></span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a><span class="fu">controls</span><span class="kw">:</span><span class="at"> 1 - Hide navigational arrows</span></span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a><span class="fu">transition</span><span class="kw">:</span><span class="at"> fade</span></span>
+<span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a><span class="fu">Options include</span><span class="kw">:</span><span class="at"> none, fade, slide, convex, concave, zoom</span></span>
+<span id="cb46-9"><a href="#cb46-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-10"><a href="#cb46-10" aria-hidden="true" tabindex="-1"></a><span class="fu">css</span><span class="kw">:</span><span class="at"> example.css - Enter the name of a custom css file</span></span>
+<span id="cb46-11"><a href="#cb46-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-12"><a href="#cb46-12" aria-hidden="true" tabindex="-1"></a><span class="fu">slideNumber</span><span class="kw">:</span><span class="at"> true - Display slide numbers</span></span>
+<span id="cb46-13"><a href="#cb46-13" aria-hidden="true" tabindex="-1"></a><span class="fu">slideNumber</span><span class="kw">:</span><span class="at"> false - Hide slide numbers (default)</span></span>
+<span id="cb46-14"><a href="#cb46-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-15"><a href="#cb46-15" aria-hidden="true" tabindex="-1"></a><span class="fu">menu</span><span class="kw">:</span><span class="at"> true - Display the slide menu icon</span></span>
+<span id="cb46-16"><a href="#cb46-16" aria-hidden="true" tabindex="-1"></a><span class="fu">menu</span><span class="kw">:</span><span class="at"> false - Hide the slide menu icon (default)</span></span>
+<span id="cb46-17"><a href="#cb46-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-18"><a href="#cb46-18" aria-hidden="true" tabindex="-1"></a><span class="fu">history</span><span class="kw">:</span><span class="at"> true - Add visited slides to browser history</span></span>
+<span id="cb46-19"><a href="#cb46-19" aria-hidden="true" tabindex="-1"></a><span class="fu">history</span><span class="kw">:</span><span class="at"> false - Hide visited slides from browser history</span></span>
+<span id="cb46-20"><a href="#cb46-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-21"><a href="#cb46-21" aria-hidden="true" tabindex="-1"></a><span class="fu">csl</span><span class="kw">:</span><span class="at"> chicago-author-date.csl - citation style</span></span>
+<span id="cb46-22"><a href="#cb46-22" aria-hidden="true" tabindex="-1"></a><span class="fu">bibliography</span><span class="kw">:</span><span class="at"> example.bib</span></span>
+<span id="cb46-23"><a href="#cb46-23" aria-hidden="true" tabindex="-1"></a><span class="fu">chalkboard</span><span class="kw">:</span><span class="at"> example-deck.json - pre-defined chalkboard</span></span></code></pre></div>
+</div>
+</section>
+<section id="references" class="slide level1 unnumbered">
+<h1 class="unnumbered">References</h1>
+<div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
+<div id="ref-zimmerer2018space" class="csl-entry" role="doc-biblioentry">
+Example. n.d. <span>“Example.”</span>
+</div>
+</div>
+</section>
+    </div>
+  </div>
+
+  <script src="support/vendor/reveal/js/reveal.js"></script>
+  <script src="support/vendor/js/jquery.min.js"></script>
+  <script src="support/vendor/videojs/video.min.js"></script>
+  <script src="support/js/decker.js"></script>
+  <script src="support/js/sage.js"></script>
+  
+  <script>
+      // this has to be done before reveal highlight plugin is initialized
+      prepareCodeHighlighting();
+      prepareSAGE();
+  </script>
+
+
+  <link rel="stylesheet" href="support/examiner/examiner.css">
+  <script type="module">
+    import {prepareExaminer} from "./support/examiner/examiner.js";
+    prepareExaminer();
+  </script>
+
+
+
+
+
+  <script>
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        pdfMaxPagesPerSlide: 10,
+        pdfSeparateFragments: false,
+        // Display controls in the bottom right corner
+        controls: Decker.meta.controls,
+        // Display a presentation progress bar
+        progress: true,
+        // Display the page number of the current slide
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+        // Push each slide change to the browser history
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+        // Enable the slide overview mode
+        overview: true,
+        // Vertical centering of slides
+        center: true,
+        // Enables touch navigation on devices with touch input
+        touch: true,
+        // Loop the presentation
+        // Change the presentation direction to be RTL
+	// Randomizes the order of slides each time the presentation loads
+        // Turns fragments on and off globally
+        fragments: true,
+        fragmentInURL: true,
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+        // Flags if speaker notes should be visible to all viewers
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        // Stop auto-sliding after user input
+          // Hide cursor if inactive
+          hideInactiveCursor: true,
+          // Time before the cursor is hidden (in ms)
+          hideCursorTime: 2000.0,
+        // Transition style
+        transition: 'none', // none/fade/slide/convex/concave/zoom
+        // Transition style for full page slide backgrounds
+        backgroundTransition: 'none', // none/fade/slide/convex/concave/zoom
+        // Factor of the display size that should remain empty around the content
+        margin: 5.0e-2,
+        // whether to mark y-overflowing slides by a red border
+        checkOverflow: false,
+
+
+        // whether to use vertical slides (in decker.js)
+         verticalSlides: true,
+
+
+        // setup reveal-menu
+        menu: {
+          side: 'left',
+          width: 'wide',
+          numbers: false,
+          titleSelector: 'h1',
+          useTextContentForMissingTitles: false,
+          hideMissingTitles: false,
+          markers: true,
+          custom: false,  
+          themes: false,
+          transitions: false,
+          openButton: true,
+          openSlideNumber: true,
+          keyboard: true,
+          sticky: false,
+          autoOpen: true,
+          delayInit: false,
+          openOnInit: false,
+          loadIcons: false
+	    },
+
+        // mathjax
+        math: {
+          mathjax: String.raw`support/vendor/mathjax/`,
+          macros: {
+              R:         "{{\\mathrm{{I}\\kern-.15em{R}}}}",
+              laplace:   "{\\Delta}",
+              grad:      "{\\nabla}",
+              T:         "^{\\mathsf{T}}",
+              abs:       ['\\left\\lvert #1 \\right\\rvert', 1],
+              det:       ['\\left\\lvert #1 \\right\\rvert', 1],
+              norm:      ['\\left\\Vert #1 \\right\\Vert', 1],
+              iprod:     ['\\left\\langle #1 \\right\\rangle', 1],
+              vec:       ['{\\mathbf{\\boldsymbol{#1}}}', 1],
+              mat:       ['{\\mathbf{\\boldsymbol{#1}}}', 1],
+              set:       ['\\mathcal{#1}', 1],
+              func:      ['\\mathrm{#1}', 1],
+              trans:     ['{#1}\\mkern-1mu^{\\mathsf{T}}', 1],
+              matrix:    ['\\begin{bmatrix} #1 \\end{bmatrix}', 1],
+              vector:    ['\\begin{pmatrix} #1 \\end{pmatrix}', 1],
+              of:        ['\\left( #1 \\right\)', 1],
+              diff:      ['\\frac{\\mathrm{d}{#1}}{\\mathrm{d}{#2}}', 2],
+              pdiff:     ['\\frac{\\partial {#1}}{\\partial {#2}}', 2],
+              vc:        ['{\\mathbf{\\boldsymbol{#1}}}', 1],
+              qt:        ['\\hat{\\vc {#1}}', 1],
+              mt:        ['{\\mathbf{\\boldsymbol{#1}}}', 1],
+              pt:        ['\\boldsymbol{#1}', 1],
+              textcolor: ['\\color{#1}', 1]
+          }
+        },
+
+          // setup charts
+          chart: {
+              defaults: {
+                  global: {
+                      tooltips: {
+                          mode: 'point',
+                          intersect: true,
+                      },
+                      legend: { position: "bottom" },
+                      plugins: { colorschemes: { scheme: "tableau.Classic10" } }
+                  },
+              },
+              bar:   { borderWidth: "1" },
+              line:  { borderWidth: "2", tension: "0" },
+              radar: { borderWidth: "2" }
+          },
+
+
+
+       
+        
+          // plugins
+          dependencies: [
+              { src: String.raw`support/plugins/charts/Chart.js`},
+              { src: String.raw`support/plugins/charts/plugin-errorbars.js`},
+              { src: String.raw`support/plugins/charts/plugin-colorschemes.js`},
+              { src: String.raw`support/plugins/charts/plugin-csszoom.js`},
+              { src: String.raw`support/plugins/charts/csv2chart.js`},
+              { src: String.raw`support/plugins/math/math.js` },
+              { src: String.raw`support/plugins/whiteboard/whiteboard.js`},
+              { src: String.raw`support/plugins/zoom/zoom.js` },
+              { src: String.raw`support/plugins/print/print.js` },
+              { src: String.raw`support/plugins/search/search.js`, async: true },
+              { src: String.raw`support/plugins/quiz-wue/quiz-wue.js` },
+    
+              { src: String.raw`support/plugins/menu/menu.js`, async: true },
+              { src: String.raw`support/plugins/explain/explain.js` },
+              { src: String.raw`support/vendor/reveal/plugin/notes/notes.js`, async: true }
+          ]
+      });
+  </script>
+
+    </body>
+</html>

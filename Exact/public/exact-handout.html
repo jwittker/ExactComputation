@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="generator" content="pandoc">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">          <meta name="dcterms.date" content="2019-10-28">          <title>Exact Computation - Geometric Approach</title>
+        <style type="text/css">
+        :root {
+                /* This is the global variable for the default alignment. Defaults to left.    */
+                /* Can be overriden in local YAML and for whole slides or individual elements  */
+                --align-global: left;
+                /* Column spacing, in same awkward unit as reveal's margin which is fraction of 
+                space. Beware, does strange things if set too large. */
+                --margin-columns: calc(0em * 100%);
+                /* Now all the different font sizes */
+                --font-size-base: 28px;
+                --font-size-medium: calc(var(--font-size-base) * 1);
+                --font-size-xx-small: calc(var(--font-size-base) * 0.4);
+                --font-size-x-small: calc(var(--font-size-base) * 0.6);
+                --font-size-small: calc(var(--font-size-base) * 0.8);
+                --font-size-large: calc(var(--font-size-base) * 1.2);
+                --font-size-x-large: calc(var(--font-size-base) * 1.4);
+                --font-size-xx-large: calc(var(--font-size-base) * 1.6);
+                /* This one defines the basic vertical spacing between elements */
+                --spacing-vertical-base: 0.5em;
+                --margin-bottom-elements-base: 0.5em;
+                --margin-bottom-h1: calc(var(--margin-bottom-elements-base) * 1);
+                --margin-bottom-h2: calc(var(--margin-bottom-elements-base) * 0);
+                --margin-bottom-h2-block: calc(var(--margin-bottom-elements-base) * 0.8);
+                --margin-bottom-h3: calc(var(--margin-bottom-elements-base) * 0);
+                --margin-bottom-h3-block: calc(var(--margin-bottom-elements-base) * 0.8);
+                --margin-bottom-p: calc(var(--margin-bottom-elements-base) * 0.8);
+                --margin-bottom-ol: calc(var(--margin-bottom-elements-base) * 0.8);
+                --margin-bottom-ul: calc(var(--margin-bottom-elements-base) * 0.8);
+                --margin-bottom-dl: calc(var(--margin-bottom-elements-base) * 0.8);
+                --margin-bottom-figure: calc(var(--margin-bottom-elements-base) * 0.8);
+                --margin-bottom-img: calc(var(--margin-bottom-elements-base) * 0.8);
+                --margin-bottom-blockquote: calc(var(--margin-bottom-elements-base) * 0.8);
+                --margin-bottom-table: calc(var(--margin-bottom-elements-base) * 1);
+                --margin-bottom-columns: calc(var(--margin-bottom-elements-base) * 0);       
+                --margin-bottom-references: calc(var(--margin-bottom-elements-base) * 0.3);
+                /* The next custom properties for the look of the decoration */
+                --border-decoration-width: 20px;
+                --border-decoration-padding: 10px;
+                --border-decoration-style: solid;  
+                /* whiteboard buttons */
+                --whiteboard-icon-size: 2vmin;
+                --whiteboard-active-color: rgb(42,157,223);
+                --whiteboard-inactive-color: lightgrey;
+                --whiteboard-background-color: rgb(250,250,250);      
+        } 
+        </style>
+                
+    <link rel="stylesheet" href="support/css/handout.css">
+    
+
+    <link rel="stylesheet" href="support/examiner/examiner.css">
+
+
+    <!-- MathJax config -->
+    <script>
+        window.MathJax = {
+            loader: {
+                load: ['[tex]/ams']
+            },
+            svg: {
+                minScale: .5,                  // smallest scaling factor to use
+                matchFontHeight: false,        // true to match ex-height of surrounding font
+                mtextInheritFont: false,       // true to make mtext elements use surrounding font
+                merrorInheritFont: true,       // true to make merror text use surrounding font
+                mathmlSpacing: false,          // true for MathML spacing rules, false for TeX rules
+                skipAttributes: {},            // RFDa and other attributes NOT to copy to the output
+                exFactor: .5,                  // default size of ex in em units
+                displayAlign: 'center',        // default for indentalign when set to 'auto'
+                displayIndent: '0',            // default for indentshift when set to 'auto'
+                fontCache: 'none',             // or 'global' or 'none'
+                localID: null,                 // ID to use for local font cache (for single equation processing)
+                internalSpeechTitles: true,    // insert <title> tags with speech content
+                titleID: 0                     // initial id number to use for aria-labeledby titles
+            },
+            tex: {
+                tags: 'ams',
+                packages: {
+                    '[+]': ['ams']
+                },
+                macros: {
+                    R: "{\\mathrm{{I}\\kern-.15em{R}}}",
+                    laplace: "{\\Delta}",
+                    grad: "{\\nabla}",
+                    T: "^{\\mathsf{T}}",
+                    norm: ['\\left\\Vert #1 \\right\\Vert', 1],
+                    iprod: ['\\left\\langle #1 \\right\\rangle', 1],
+                    vec: ['\\boldsymbol{\\mathbf{#1}}', 1],
+                    mat: ['\\boldsymbol{\\mathbf{#1}}', 1],
+                    set: ['\\mathcal{#1}', 1],
+                    func: ['\\mathrm{#1}', 1],
+                    trans: ['{#1}\\mkern-1mu^{\\mathsf{T}}', 1],
+                    matrix: ['\\begin{bmatrix} #1 \\end{bmatrix}', 1],
+                    vector: ['\\begin{pmatrix} #1 \\end{pmatrix}', 1],
+                    of: ['\\mkern{-2mu}\\left( #1 \\right\)', 1],
+                    diff: ['\\frac{\\mathrm{d}{#1}}{\\mathrm{d}{#2}}', 2],
+                    pdiff: ['\\frac{\\partial {#1}}{\\partial {#2}}', 2],
+
+                    vc: ['\\mathbf{#1}', 1],
+                    abs: ['\\lvert#1\\rvert', 1],
+                    norm: ['\\lVert#1\\rVert', 1],
+                    det: ['\\lvert#1\\rvert', 1],
+                    qt: ['\\hat{\\vc {#1}}', 1],
+                    mt: ['\\boldsymbol{#1}', 1],
+                    pt: ['\\boldsymbol{#1}', 1],
+                    textcolor: ['\\color{#1}', 1]
+                }
+            },
+            options: {
+                // disable menu
+                renderActions: {
+                    addMenu: [0, '', '']
+                },
+            }
+        };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async src="support/vendor/mathjax/tex-svg.js">
+    </script>
+
+    <script>
+      var socket = new WebSocket("ws://" + location.host + "/reload");
+      socket.onmessage = function (event) {
+        if (event.data.startsWith("reload!")) 
+          window.location.reload(true);
+      };
+    </script>
+
+                        <link rel="stylesheet" href="custom.css">
+            </head>
+
+    <body class="document handout" onload="initHandout();">
+                        <header>
+          <h1 class="title">Exact Computation - Geometric Approach</h1>
+                                        <p id="date" class="lead">2019-10-28</p>
+                  </header>
+                
+<!-- body must not be indented or code blocks render badly -->
+<!-- The following line must be left aligned! -->
+<section class="slide level1">
+
+<div class="slide-wrapper">
+<hr />
+<section id="topics" class="slide level1">
+<h1>Topics</h1>
+<div class="box columns observation">
+<h2 class="observation" id="section"></h2>
+<ol type="1">
+<li>Geometric Approach - Idea</li>
+<li>Finite Precision / Finite Resolution Geometry
+<ol type="1">
+<li>Ersatz Line Geometry</li>
+</ol></li>
+<li>Interval Geometry</li>
+<li>Topological Approaches
+<ol type="1">
+<li>Snap Rounding</li>
+</ol></li>
+<li>Rounded Geometry</li>
+</ol>
+</div>
+</section>
+</div>
+<div class="slide-wrapper">
+<hr />
+<section id="geometric-approach---idea" class="slide level1">
+<h1>Geometric Approach - Idea</h1>
+<div class="box columns definition">
+<h2 class="definition" id="section-1"></h2>
+<ul>
+<li>Geometric = Numeric + Combinatorial
+<ul>
+<li>Combinatorial <span class="math inline">\(\equiv\)</span> discrete, topological relations among geometric objects <span class="citation" data-cites="SharmaYap">(Sharma and Yap 2017)</span></li>
+</ul></li>
+</ul>
+</div>
+<div class="box columns">
+<h2 id="section-2"></h2>
+<ul>
+<li>modify existing geometry to accomplish <strong>robustness</strong> (not exactness) <span class="citation" data-cites="MehlhornYap">(Mehlhorn and Yap, n.d.)</span>
+<ul>
+<li>“ersatz geometry” in fixed precision substitutes original geometry (mostly euclidean / <em>“POEG”</em>)</li>
+<li>ensure / preserve geometric and topological properties in algorithms <span class="citation" data-cites="SharmaYap">(Sharma and Yap 2017)</span>
+<ul>
+<li>e.g. planar input for voronoi diagram has planar output</li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+</section>
+</div>
+<div class="slide-wrapper">
+<hr />
+<section id="finite-precision-finite-resolution-geometry" class="slide level1">
+<h1>Finite Precision / Finite Resolution Geometry</h1>
+<ul>
+<li>usually continuous parameters</li>
+<li>transforming geometric objects from continuous to discrete space
+<ul>
+<li>e.g. Integer Grid</li>
+</ul></li>
+<li>Replace existing geometry</li>
+</ul>
+</section>
+</div>
+<div class="slide-wrapper">
+<hr />
+<section id="ersatz-line-geometry" class="slide level1 sub columns">
+<h1 class="sub columns">Ersatz Line Geometry</h1>
+<div class="multi-column-row multi-column-row-3">
+<div class="grow-1 column column-1">
+<div class="box columns left">
+<h2 class="left" id="section-3"></h2>
+<figure class="decker" alt="FinitePrecisionLine.png"><img class="decker" data-src="img/FinitePrecisionLine.png"><figcaption class="decker"><span class="citation" data-cites="MehlhornYap">(Mehlhorn and Yap, n.d.)</span></figcaption></figure>
+</div>
+</div>
+<div class="grow-1 column column-3">
+<div class="box columns right">
+<h2 class="right" id="section-4"></h2>
+<ol type="A">
+<li>Interval Geometry</li>
+<li>Topological Approach
+<ul>
+<li>in the following as Polylines / Polysegments</li>
+</ul></li>
+<li>Rounded (Parameter) Geometry</li>
+<li>Discretized Geometry
+<ul>
+<li>not discussed here <span class="math inline">\(\rightarrow\)</span> Computergrafik</li>
+</ul></li>
+</ol>
+</div>
+</div>
+</div>
+</section>
+</div>
+<div class="slide-wrapper">
+<hr />
+<section id="ersatz-line-geometry-1" class="slide level1 sub columns">
+<h1 class="sub columns">Ersatz Line Geometry</h1>
+<div class="multi-column-row multi-column-row-3">
+<div class="grow-1 column column-1">
+<div class="box columns left">
+<h2 class="left" id="section-5"></h2>
+<figure class="decker" alt="FinitePrecisionLine.png"><img class="decker" data-src="img/FinitePrecisionLine.png"><figcaption class="decker"><span class="citation" data-cites="MehlhornYap">(Mehlhorn and Yap, n.d.)</span></figcaption></figure>
+</div>
+</div>
+<div class="grow-1 column column-3">
+<div class="box columns note right">
+<h2 class="note right" id="section-6"></h2>
+<ul>
+<li>chosen ersatz geometry depends on application needs
+<ul>
+<li>which properties have to be preserved</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+</div>
+<div class="slide-wrapper">
+<hr />
+<section id="interval-geometry" class="slide level1 columns">
+<h1 class="columns">Interval Geometry</h1>
+<div class="multi-column-row multi-column-row-3">
+<div class="grow-1 column column-1">
+<div class="box columns left">
+<h2 class="left" id="section-7"></h2>
+<figure class="decker" alt="FinitePrecisionLineA.png"><img class="decker" data-src="img/FinitePrecisionLineA.png"><figcaption class="decker"><span class="citation" data-cites="MehlhornYap">(Mehlhorn and Yap, n.d.)</span></figcaption></figure>
+</div>
+</div>
+<div class="grow-1 column column-3">
+<div class="box columns right">
+<h2 class="right" id="abstract">Abstract</h2>
+<ul>
+<li>Interval Geometry / Fat Geometry / Epsilon Geometry</li>
+<li>geometry eqiuvalent of interval arithmetic</li>
+<li>focus on (approximate) predicate evaluation</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+</div>
+<div class="slide-wrapper">
+<hr />
+<section id="interval-geometry-1" class="slide level1 sub columns">
+<h1 class="sub columns">Interval Geometry</h1>
+<div class="multi-column-row multi-column-row-3">
+<div class="grow-1 column column-1">
+<div class="box columns left">
+<h2 class="left" id="section-8"></h2>
+<figure class="decker" alt="FatPointFatLine.png"><img class="decker" data-src="img/FatPointFatLine.png"><figcaption class="decker"><span class="citation" data-cites="MehlhornYap">(Mehlhorn and Yap, n.d.)</span></figcaption></figure>
+</div>
+</div>
+<div class="grow-1 column column-3">
+<div class="box columns right">
+<h2 class="right" id="section-9"></h2>
+<ul>
+<li>zone around line with all points in <span class="math inline">\(\epsilon\)</span> distance to the line
+<ul>
+<li>point <span class="math inline">\(\rightarrow\)</span> disk, line <span class="math inline">\(\rightarrow\)</span> strip</li>
+</ul></li>
+<li>Point(X,Y) on Line(a,b,c)? <span class="math inline">\(\rightarrow\)</span> <span class="math inline">\(|aX + bY + c| &lt; \epsilon?\)</span>
+<ul>
+<li>different possible interpretations</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+</div>
+<div class="slide-wrapper">
+<hr />
+<section id="interval-geometry-2" class="slide level1 sub">
+<h1 class="sub">Interval Geometry</h1>
+<div class="box columns example">
+<h2 class="example" id="applications">Applications</h2>
+<ul>
+<li>Line(a, b, c) <span class="math inline">\(:= aX + bY + c = 0\)</span> <span class="math inline">\(\rightarrow\)</span> OnLine( Intersect(l, l’), l) may fail
+<ul>
+<li>small computational error can become catastrophic <span class="math inline">\(\rightarrow\)</span> Exact Geometric Computation? (Pascal?)</li>
+</ul></li>
+<li>computational metrology <span class="math inline">\(\rightarrow\)</span> mechanical design and manufacture (tolerance)</li>
+</ul>
+</div>
+</section>
+</div>
+<div class="slide-wrapper">
+<hr />
+<section id="interval-geometry-segal-and-sequin" class="slide level1 sub">
+<h1 class="sub">Interval Geometry (Segal and Sequin)</h1>
+<ul>
+<li><em>“toleranced objects”</em></li>
+<li><em>“minimum feature separations”</em>
+<ul>
+<li>close objects get merged or pushed apart</li>
+</ul></li>
+</ul>
+</section>
+</div>
+<div class="slide-wrapper">
+<hr />
+<section id="interval-geometry-guibas-salesin-stolfi" class="slide level1 sub">
+<h1 class="sub">Interval Geometry (Guibas, Salesin, Stolfi)</h1>
+<ul>
+<li>similar to Segal and Seqiun
+<ul>
+<li>focus on points</li>
+</ul></li>
+<li>predicates can return <strong>“DON’T KNOW”</strong> value</li>
+</ul>
+</section>
+</div>
+<div class="slide-wrapper">
+<hr />
+<section id="interval-geometry-general" class="slide level1 sub columns">
+<h1 class="sub columns">Interval Geometry (General)</h1>
+<div class="multi-column-row multi-column-row-3">
+<div class="grow-1 column column-1">
+<div class="box columns left">
+<h2 class="left" id="section-10"></h2>
+<ul>
+<li>“zones with nonconstant descriptive complexity”
+<ul>
+<li>fat object not limited to disks, stripes, …</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div class="grow-1 column column-3">
+<div class="box columns right">
+<h2 class="right" id="section-11"></h2>
+<figure class="decker" alt="FatPolygonLine.png"><img class="decker" data-src="img/FatPolygonLine.png"><figcaption class="decker"><span class="citation" data-cites="MehlhornYap">(Mehlhorn and Yap, n.d.)</span></figcaption></figure>
+</div>
+</div>
+</div>
+</section>
+</div>
+<div class="slide-wrapper">
+<hr />
+<section id="epsilon-tweaking" class="slide level1 sub">
+<h1 class="sub">Epsilon Tweaking</h1>
+<ul>
+<li>avoidance of false negatives and false positives</li>
+</ul>
+</section>
+</div>
+<div class="slide-wrapper">
+<hr />
+<section id="topological-approaches" class="slide level1 columns">
+<h1 class="columns">Topological Approaches</h1>
+<div class="multi-column-row multi-column-row-3">
+<div class="grow-1 column column-1">
+<div class="box columns left">
+<h2 class="left" id="section-12"></h2>
+<figure class="decker" alt="FinitePrecisionLineB.png"><img class="decker" data-src="img/FinitePrecisionLineB.png"><figcaption class="decker"><span class="citation" data-cites="MehlhornYap">(Mehlhorn and Yap, n.d.)</span></figcaption></figure>
+</div>
+</div>
+<div class="grow-1 column column-3">
+<div class="box columns right">
+<h2 class="right" id="abstract-1">Abstract</h2>
+<ul>
+<li>find ersatz geometry which is topologically consistent
+<ul>
+<li>“topological consistency as a fundamental principle for achieving robustness” (<span class="citation" data-cites="MehlhornYap">(Mehlhorn and Yap, n.d.)</span> referring to SugiharaIri)</li>
+</ul></li>
+<li>substitute lines with polylines or polysegments</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+</div>
+<div class="slide-wrapper">
+<hr />
+<section id="snap-rounding" class="slide level1 sub">
+<h1 class="sub">Snap Rounding</h1>
+<div class="box columns definition">
+<h2 class="definition" id="line-segment-intersection">Line Segment Intersection</h2>
+<ul>
+<li>goal: compute arrangement of lines in a plane</li>
+<li>result: <strong>“1-skeleton”</strong> / graph defining lines and their intersections</li>
+</ul>
+</div>
+<div class="box columns">
+<h2 id="section-13"></h2>
+<ul>
+<li>VLSI circuit design, hidden line elimintation, cipping and windowing, physical simulations, etc. <span class="citation" data-cites="MehlhornYap">(Mehlhorn and Yap, n.d.)</span></li>
+</ul>
+</div>
+</section>
+</div>
+<div class="slide-wrapper">
+<hr />
+<section id="snap-rounding-1" class="slide level1 sub">
+<h1 class="sub">Snap Rounding</h1>
+<figure class="decker" alt="1-Skeleton.png"><img class="decker" data-src="img/1-Skeleton.png"><figcaption class="decker">1-Skeleton <span class="citation" data-cites="MehlhornYap">(Mehlhorn and Yap, n.d.)</span></figcaption></figure>
+</section>
+</div>
+<div class="slide-wrapper">
+<hr />
+<section id="snap-rounding-2" class="slide level1 sub">
+<h1 class="sub">Snap Rounding</h1>
+<div class="box columns definition">
+<h2 class="definition" id="bentley-ottman-algorithm">Bentley-Ottman Algorithm</h2>
+<ul>
+<li>Vertical Sweep Line (<span class="math inline">\(x=x_0\)</span>) fills Event Queue <em>Q</em> with increasing <span class="math inline">\(x_0\)</span>
+<ul>
+<li>Start / Stop Event (Start and End of Line)
+<ul>
+<li>Line Segments sorted by x-coordinate in <em>Q</em></li>
+<li>Line Segments pulled from <em>Q</em> stored in binary tree <em>T</em> (sorted by y-coordinate)</li>
+<li>calculate possible intersection <span class="math inline">\(q\)</span> of neighboring Line Segments according to <em>T</em> and add <span class="math inline">\(q\)</span> to <em>Q</em></li>
+</ul></li>
+<li>Intersection Event (order of Line Segments change in <em>Q</em>)</li>
+<li><span class="math inline">\(\mathcal{O}((n + k) log n)\)</span>, with <span class="math inline">\(n\)</span> line segments and <span class="math inline">\(k\)</span> intersections</li>
+</ul></li>
+</ul>
+</div>
+<div class="box columns">
+<h2 id="section-14"></h2>
+<ul>
+<li>maybe known as one of the Sweep Line Algorithms presented in <strong>Einführung in den Algorithmenentwurf</strong></li>
+</ul>
+</div>
+</section>
+</div>
+<div class="slide-wrapper">
+<hr />
+<section id="bentley-ottman-algorithm-1" class="slide level1 sub">
+<h1 class="sub">Bentley-Ottman Algorithm</h1>
+<img class="decker" data-src="img/SweepLine1.svg" alt="SweepLine1.svg">
+</section>
+</div>
+<div class="slide-wrapper">
+<hr />
+<section id="bentley-ottman-algorithm-2" class="slide level1 sub">
+<h1 class="sub">Bentley-Ottman Algorithm</h1>
+<img class="decker" data-src="img/SweepLine2.svg" alt="SweepLine2.svg">
+</section>
+</div>
+<div class="slide-wrapper">
+<hr />
+<section id="bentley-ottman-algorithm-3" class="slide level1 sub">
+<h1 class="sub">Bentley-Ottman Algorithm</h1>
+<img class="decker" data-src="img/SweepLine3.svg" alt="SweepLine3.svg">
+</section>
+</div>
+<div class="slide-wrapper">
+<hr />
+<section id="yao-greene-grid-model" class="slide level1 sub">
+<h1 class="sub">Yao-Greene Grid Model</h1>
+<div class="box columns definition">
+<h2 class="definition" id="section-15"></h2>
+<ul>
+<li>unit grid <span class="math inline">\(G_2 = \mathbb{Z} \times \mathbb{Z}\)</span> (finite-precision model)
+<ul>
+<li>defines representable numbers</li>
+<li>calculated intersection point is probably not representable</li>
+</ul></li>
+</ul>
+</div>
+<div class="box columns">
+<h2 id="section-16"></h2>
+<ul>
+<li><strong>“snap”</strong> point <span class="math inline">\(p\)</span> to next representable point <span class="math inline">\(p&#39;\)</span>
+<ul>
+<li>snapped point <span class="math inline">\(p&#39;\)</span> is not in <span class="math inline">\(l=[a,b]\)</span> anymore
+<ul>
+<li>OnLine(Intersect(l, l’), l) will fail</li>
+</ul></li>
+</ul></li>
+<li>line l as polyline <span class="math inline">\(l=[a, p&#39;, b]\)</span></li>
+<li>Bentley-Ottman algorithm has to be slightly adapted</li>
+</ul>
+</div>
+</section>
+</div>
+<div class="slide-wrapper">
+<hr />
+<section id="yao-greene-grid-model-1" class="slide level1 sub">
+<h1 class="sub">Yao-Greene Grid Model</h1>
+<img class="decker" data-src="img/SweepLine3.svg" alt="SweepLine3.svg">
+</section>
+</div>
+<div class="slide-wrapper">
+<hr />
+<section id="yao-greene-grid-model-2" class="slide level1 sub">
+<h1 class="sub">Yao-Greene Grid Model</h1>
+<img class="decker" data-src="img/SweepLine4.svg" alt="SweepLine4.svg">
+</section>
+</div>
+<div class="slide-wrapper">
+<hr />
+<section id="simple-snap-rounding-rules" class="slide level1 sub">
+<h1 class="sub">Simple (Snap) Rounding Rules</h1>
+<div class="box columns definition">
+<h2 class="definition" id="section-17"></h2>
+<ul>
+<li><strong>rounding interval</strong>: half open interval <span class="math inline">\(R_1=(-\frac{1}{2}, \frac{1}{2}]\)</span></li>
+<li><strong>rounding square</strong> <span class="math inline">\(R_2 = R_1 \times R_1\)</span></li>
+</ul>
+</div>
+<div class="box columns example">
+<h2 class="example" id="section-18"></h2>
+<ul>
+<li><span class="math inline">\(x \rightarrow (x + R_1) \cap \mathbb{Z}\)</span>, denoted <span class="math inline">\(\lfloor x \rceil\)</span>
+<ul>
+<li>round up in ties (e.g. 2.5)</li>
+</ul></li>
+<li><span class="math inline">\(p \rightarrow (p + R_2) \cap G_2\)</span>, denoted <span class="math inline">\(\lfloor p \rceil\)</span>
+<ul>
+<li><span class="math inline">\(+\)</span> is the Minkowski sum</li>
+</ul></li>
+</ul>
+</div>
+</section>
+</div>
+<div class="slide-wrapper">
+<hr />
+<section id="snap-rounding---problems-side-effects" class="slide level1 sub">
+<h1 class="sub">Snap Rounding - Problems / Side Effects</h1>
+<div class="box columns question">
+<h2 class="question" id="any-ideas">Any Ideas?</h2>
+</div>
+</section>
+</div>
+<div class="slide-wrapper">
+<hr />
+<section id="snap-rounding---problems-side-effects-1" class="slide level1 sub">
+<h1 class="sub">Snap Rounding - Problems / Side Effects</h1>
+<div class="box columns alert">
+<h2 class="alert" id="section-19"></h2>
+<ul>
+<li>Unbounded Change: intersections might move after snapping</li>
+<li>Cascaded and New Intersections: new (cascading) intersections as side effect</li>
+</ul>
+</div>
+</section>
+</div>
+<div class="slide-wrapper">
+<hr />
+<section id="snap-rounding---problems-side-effects-2" class="slide level1 sub columns">
+<h1 class="sub columns">Snap Rounding - Problems / Side Effects</h1>
+<div class="multi-column-row multi-column-row-3">
+<div class="grow-1 column column-1">
+<div class="box columns alert left">
+<h2 class="alert left" id="section-20"></h2>
+<ul>
+<li>Drifting: modifications to polysegment drift it from original position</li>
+</ul>
+</div>
+</div>
+<div class="grow-1 column column-3">
+<div class="box columns right">
+<h2 class="right" id="section-21"></h2>
+<figure class="decker" alt="Drifting.png"><img class="decker" data-src="img/Drifting.png"><figcaption class="decker">Drifting <span class="citation" data-cites="MehlhornYap">(Mehlhorn and Yap, n.d.)</span></figcaption></figure>
+</div>
+</div>
+</div>
+</section>
+</div>
+<div class="slide-wrapper">
+<hr />
+<section id="snap-rounding---problems-side-effects-3" class="slide level1 sub columns">
+<h1 class="sub columns">Snap Rounding - Problems / Side Effects</h1>
+<div class="multi-column-row multi-column-row-3">
+<div class="grow-1 column column-1">
+<div class="box columns alert left">
+<h2 class="alert left" id="section-22"></h2>
+<ul>
+<li>Topological Change: e.g. topological inversion</li>
+</ul>
+</div>
+</div>
+<div class="grow-1 column column-3">
+<div class="box columns right">
+<h2 class="right" id="section-23"></h2>
+<figure class="decker" alt="TopologicalChange.png"><img class="decker" data-src="img/TopologicalChange.png"><figcaption class="decker">Topological Inversion <span class="citation" data-cites="MehlhornYap">(Mehlhorn and Yap, n.d.)</span></figcaption></figure>
+</div>
+</div>
+</div>
+</section>
+</div>
+<div class="slide-wrapper">
+<hr />
+<section id="snap-rounding---problems-side-effects-4" class="slide level1 sub">
+<h1 class="sub">Snap Rounding - Problems / Side Effects</h1>
+<div class="box columns alert">
+<h2 class="alert" id="section-24"></h2>
+<ul>
+<li>Unbounded Change</li>
+<li>Cascaded and New Intersections</li>
+<li>Drifting</li>
+<li>Topological Change</li>
+<li>Braiding</li>
+</ul>
+</div>
+<div class="box columns note fragment">
+<h2 class="note" id="section-25"></h2>
+<ul>
+<li>Degeneration vs. Inversion
+<ul>
+<li>acceptable vs. not acceptable change</li>
+</ul></li>
+</ul>
+</div>
+</section>
+</div>
+<div class="slide-wrapper">
+<hr />
+<section id="topological-approach---outlook" class="slide level1 sub">
+<h1 class="sub">Topological Approach - Outlook</h1>
+<ul>
+<li>More on Snap Rounding: Hobby’s Theorem, Yao and Greene, Milenkovic, Sugihara</li>
+<li>e.g. stable algorithms (<em>“stability &gt; topological consistency”</em>)</li>
+</ul>
+</section>
+</div>
+<div class="slide-wrapper">
+<hr />
+<section id="rounded-parameter-geometry" class="slide level1 columns">
+<h1 class="columns">Rounded (Parameter) Geometry</h1>
+<div class="multi-column-row multi-column-row-3">
+<div class="grow-1 column column-1">
+<div class="box columns left">
+<h2 class="left" id="section-26"></h2>
+<figure class="decker" alt="FinitePrecisionLineC.png"><img class="decker" data-src="img/FinitePrecisionLineC.png"><figcaption class="decker"><span class="citation" data-cites="MehlhornYap">(Mehlhorn and Yap, n.d.)</span></figcaption></figure>
+</div>
+</div>
+<div class="grow-1 column column-3">
+<div class="box columns right">
+<h2 class="right" id="abstract-2">Abstract</h2>
+<ul>
+<li>Line(a, b, c): <span class="math inline">\(aX + bY + c = 0\)</span> into Line(a’, b’, c’) with discrete parameters
+<ul>
+<li>Rounded Line</li>
+<li>“a line whose equation has bounded coefficients” <span class="citation" data-cites="SharmaYap">(Sharma and Yap 2017)</span></li>
+<li>coefficients are bounded integers</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+</div>
+<div class="slide-wrapper">
+<hr />
+<section id="rounded-parameter-geometry-1" class="slide level1 sub columns">
+<h1 class="sub columns">Rounded (Parameter) Geometry</h1>
+<div class="multi-column-row multi-column-row-3">
+<div class="grow-1 column column-1">
+<div class="box columns left">
+<h2 class="left" id="section-27"></h2>
+<figure class="decker" alt="RoundedParameterGrid.png"><img class="decker" data-src="img/RoundedParameterGrid.png"><figcaption class="decker"><span class="citation" data-cites="SharmaYap">(Sharma and Yap 2017)</span></figcaption></figure>
+</div>
+</div>
+</div>
+</section>
+</div>
+<div class="slide-wrapper">
+<hr />
+<section id="rounded-parameter-geometry-2" class="slide level1 sub">
+<h1 class="sub">Rounded (Parameter) Geometry</h1>
+<div class="box columns definition">
+<h2 class="definition" id="simultaneous-approximation-by-rationals">Simultaneous approximation by rationals</h2>
+<ul>
+<li>given <span class="math inline">\(a_1, ..., a_n \in \mathcal{R}\)</span>, find integers <span class="math inline">\(p_1, ..., p_n\)</span> and <span class="math inline">\(q\)</span> such that <span class="math inline">\(max_{1\leq i\leq n}|a_iq - p_i|\)</span> is minimized (<span class="citation" data-cites="SharmaYap">(Sharma and Yap 2017)</span> referring to Sugihara)
+<ul>
+<li><span class="math inline">\(a&#39;, b&#39;, c&#39;\)</span> are representable</li>
+</ul></li>
+</ul>
+</div>
+<div class="box columns">
+<h2 id="section-28"></h2>
+<ul>
+<li>lattice reduction techniques to approximate the above</li>
+</ul>
+</div>
+</section>
+</div>
+<div class="slide-wrapper">
+<hr />
+<section id="bibliography" class="slide level1">
+<h1>Bibliography</h1>
+<div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
+<div id="ref-MehlhornYap" class="csl-entry" role="doc-biblioentry">
+Mehlhorn, K., and C. Yap. n.d. <span>“Geometric Approaches.”</span> In.
+</div>
+<div id="ref-SharmaYap" class="csl-entry" role="doc-biblioentry">
+Sharma, Vikram, and Chee K Yap. 2017. <span>“Robust Geometric Computation.”</span> In <em>Handbook of Discrete and Computational Geometry</em>, 1189–1223. Chapman; Hall/CRC.
+</div>
+</div>
+</section>
+</div>
+</section>
+<!-- The previous line must be left aligned! -->
+
+        <script src="support/vendor/js/jquery.min.js" type="text/javascript"></script>
+        <script src="support/vendor/js/lazyload.min.js" type="text/javascript"></script>
+        <script src="support/js/handout.js"></script>
+
+        <script type="module">
+          import {prepareExaminer} from "./support/examiner/examiner.js";
+          prepareExaminer();
+        </script>
+
+                        </address>
+        <script>
+          var lazyLoadInstance = new LazyLoad({
+            elements_selector: "img, video, iframe"
+          });
+        </script>
+            </body>
+  </html>

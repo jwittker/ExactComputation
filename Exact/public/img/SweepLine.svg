@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/PR-SVG-20010719/DTD/svg10.dtd">
+<svg width="51cm" height="86cm" viewBox="99 -501 1002 1702" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <g id="Hintergrund">
+    <g>
+      <line style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x1="180" y1="160" x2="620" y2="540"/>
+      <path style="fill: #000000; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" fill-rule="evenodd" d="M 180 160 C 181.634,158.108 185.16,157.85 187.052,159.484 C 188.944,161.118 189.202,164.644 187.568,166.536 C 185.934,168.428 182.408,168.686 180.516,167.052 C 178.624,165.418 178.366,161.892 180,160z"/>
+      <path style="fill: #000000; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" fill-rule="evenodd" d="M 620 540 C 618.366,541.892 614.84,542.15 612.948,540.516 C 611.056,538.882 610.798,535.356 612.432,533.464 C 614.066,531.572 617.592,531.314 619.484,532.948 C 621.376,534.582 621.634,538.108 620,540z"/>
+    </g>
+    <g>
+      <line style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x1="234" y1="291" x2="319" y2="482"/>
+      <path style="fill: #000000; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" fill-rule="evenodd" d="M 234 291 C 236.284,289.984 239.585,291.251 240.601,293.535 C 241.617,295.819 240.35,299.12 238.066,300.136 C 235.782,301.153 232.481,299.885 231.465,297.601 C 230.448,295.317 231.716,292.016 234,291z"/>
+      <path style="fill: #000000; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" fill-rule="evenodd" d="M 319 482 C 316.716,483.016 313.415,481.749 312.399,479.465 C 311.383,477.181 312.65,473.88 314.934,472.864 C 317.218,471.847 320.519,473.115 321.535,475.399 C 322.552,477.683 321.284,480.984 319,482z"/>
+    </g>
+    <g>
+      <line style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x1="420" y1="540" x2="680" y2="320"/>
+      <path style="fill: #000000; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" fill-rule="evenodd" d="M 420 540 C 418.385,538.092 418.679,534.568 420.587,532.953 C 422.496,531.339 426.019,531.632 427.634,533.541 C 429.249,535.449 428.955,538.972 427.047,540.587 C 425.138,542.202 421.615,541.908 420,540z"/>
+      <path style="fill: #000000; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" fill-rule="evenodd" d="M 680 320 C 681.615,321.908 681.321,325.432 679.413,327.047 C 677.504,328.661 673.981,328.368 672.366,326.459 C 670.751,324.551 671.045,321.028 672.953,319.413 C 674.862,317.798 678.385,318.092 680,320z"/>
+    </g>
+    <g>
+      <line style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x1="359" y1="534" x2="917" y2="391"/>
+      <path style="fill: #000000; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" fill-rule="evenodd" d="M 359 534 C 358.379,531.578 360.18,528.536 362.602,527.915 C 365.024,527.295 368.066,529.096 368.687,531.517 C 369.308,533.939 367.506,536.982 365.085,537.602 C 362.663,538.223 359.621,536.422 359,534z"/>
+    </g>
+    <line style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x1="862" y1="215" x2="1025" y2="314"/>
+    <line style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x1="1016" y1="197" x2="847" y2="344"/>
+    <line style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #ff0000" x1="680" y1="600" x2="680" y2="100"/>
+    <ellipse style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #ff0000" cx="523" cy="451" rx="14" ry="15"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="300" y="100" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="300" y="200" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="100" y="300" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="200" y="300" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="300" y="300" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="100" y="400" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="200" y="400" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="300" y="400" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="100" y="500" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="200" y="500" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="300" y="500" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="400" y="100" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="500" y="100" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="600" y="100" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="400" y="200" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="500" y="200" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="600" y="200" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="400" y="300" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="500" y="300" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="600" y="300" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="400" y="400" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="500" y="400" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="600" y="400" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="400" y="500" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="500" y="500" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="600" y="500" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="700" y="100" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="800" y="100" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="900" y="100" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="700" y="200" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="800" y="200" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="900" y="200" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="700" y="300" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="800" y="300" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="900" y="300" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="700" y="400" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="800" y="400" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="900" y="400" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="700" y="500" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="800" y="500" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="900" y="500" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="1000" y="100" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="1000" y="200" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="1000" y="300" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="1000" y="400" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="1000" y="500" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="100" y="100" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="200" y="100" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="100" y="200" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="200" y="200" width="100" height="100" rx="0" ry="0"/>
+    <g>
+      <line style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x1="234" y1="891" x2="319" y2="1082"/>
+      <path style="fill: #000000; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" fill-rule="evenodd" d="M 234 891 C 236.284,889.984 239.585,891.251 240.601,893.535 C 241.617,895.819 240.35,899.12 238.066,900.136 C 235.782,901.153 232.481,899.885 231.465,897.601 C 230.448,895.317 231.716,892.016 234,891z"/>
+      <path style="fill: #000000; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" fill-rule="evenodd" d="M 319 1082 C 316.716,1083.02 313.415,1081.75 312.399,1079.46 C 311.383,1077.18 312.65,1073.88 314.934,1072.86 C 317.218,1071.85 320.519,1073.11 321.535,1075.4 C 322.552,1077.68 321.284,1080.98 319,1082z"/>
+    </g>
+    <g>
+      <line style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x1="359" y1="1134" x2="917" y2="991"/>
+      <path style="fill: #000000; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" fill-rule="evenodd" d="M 359 1134 C 358.379,1131.58 360.18,1128.54 362.602,1127.92 C 365.024,1127.29 368.066,1129.1 368.687,1131.52 C 369.308,1133.94 367.506,1136.98 365.085,1137.6 C 362.663,1138.22 359.621,1136.42 359,1134z"/>
+    </g>
+    <line style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x1="862" y1="815" x2="1025" y2="914"/>
+    <line style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x1="1016" y1="797" x2="847" y2="944"/>
+    <line style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #ff0000" x1="680" y1="1200" x2="680" y2="700"/>
+    <ellipse style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #ff0000" cx="499" cy="999" rx="14" ry="15"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="300" y="700" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="300" y="800" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="100" y="900" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="200" y="900" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="300" y="900" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="100" y="1000" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="200" y="1000" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="300" y="1000" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="100" y="1100" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="200" y="1100" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="300" y="1100" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="400" y="700" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="500" y="700" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="600" y="700" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="400" y="800" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="500" y="800" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="600" y="800" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="400" y="900" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="500" y="900" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="600" y="900" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="400" y="1000" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="500" y="1000" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="600" y="1000" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="400" y="1100" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="500" y="1100" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="600" y="1100" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="700" y="700" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="800" y="700" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="900" y="700" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="700" y="800" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="800" y="800" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="900" y="800" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="700" y="900" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="800" y="900" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="900" y="900" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="700" y="1000" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="800" y="1000" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="900" y="1000" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="700" y="1100" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="800" y="1100" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="900" y="1100" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="1000" y="700" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="1000" y="800" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="1000" y="900" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="1000" y="1000" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="1000" y="1100" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="100" y="700" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="200" y="700" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="100" y="800" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="200" y="800" width="100" height="100" rx="0" ry="0"/>
+    <g>
+      <line style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x1="180" y1="760" x2="504" y2="1003"/>
+      <path style="fill: #000000; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" fill-rule="evenodd" d="M 180 760 C 181.5,758 185,757.5 187,759 C 189,760.5 189.5,764 188,766 C 186.5,768 183,768.5 181,767 C 179,765.5 178.5,762 180,760z"/>
+      <path style="fill: #000000; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" fill-rule="evenodd" d="M 504 1003 C 502.5,1005 499,1005.5 497,1004 C 495,1002.5 494.5,999 496,997 C 497.5,995 501,994.5 503,996 C 505,997.5 505.5,1001 504,1003z"/>
+    </g>
+    <g>
+      <line style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x1="500" y1="1000" x2="620" y2="1140"/>
+      <path style="fill: #000000; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" fill-rule="evenodd" d="M 620 1140 C 618.102,1141.63 614.577,1141.36 612.95,1139.46 C 611.323,1137.56 611.594,1134.03 613.492,1132.41 C 615.39,1130.78 618.915,1131.05 620.542,1132.95 C 622.169,1134.85 621.898,1138.37 620,1140z"/>
+    </g>
+    <g>
+      <line style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x1="420" y1="1140" x2="500" y2="1000"/>
+      <path style="fill: #000000; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" fill-rule="evenodd" d="M 420 1140 C 417.829,1138.76 416.899,1135.35 418.139,1133.18 C 419.38,1131.01 422.791,1130.08 424.961,1131.32 C 427.132,1132.56 428.062,1135.97 426.822,1138.14 C 425.582,1140.31 422.171,1141.24 420,1140z"/>
+    </g>
+    <g>
+      <line style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x1="680" y1="920" x2="500" y2="1000"/>
+      <path style="fill: #000000; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" fill-rule="evenodd" d="M 680 920 C 681.015,922.285 679.746,925.584 677.462,926.6 C 675.177,927.615 671.877,926.346 670.862,924.061 C 669.847,921.777 671.116,918.477 673.4,917.462 C 675.685,916.446 678.985,917.715 680,920z"/>
+    </g>
+    <g>
+      <line style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x1="180" y1="-440" x2="620" y2="-60"/>
+      <path style="fill: #000000; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" fill-rule="evenodd" d="M 180 -440 C 181.634,-441.892 185.16,-442.15 187.052,-440.516 C 188.944,-438.882 189.202,-435.356 187.568,-433.464 C 185.934,-431.572 182.408,-431.314 180.516,-432.948 C 178.624,-434.582 178.366,-438.108 180,-440z"/>
+    </g>
+    <g>
+      <line style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x1="234" y1="-309" x2="319" y2="-118"/>
+      <path style="fill: #000000; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" fill-rule="evenodd" d="M 234 -309 C 236.284,-310.016 239.585,-308.749 240.601,-306.465 C 241.617,-304.181 240.35,-300.88 238.066,-299.864 C 235.782,-298.847 232.481,-300.115 231.465,-302.399 C 230.448,-304.683 231.716,-307.984 234,-309z"/>
+      <path style="fill: #000000; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" fill-rule="evenodd" d="M 319 -118 C 316.716,-116.984 313.415,-118.251 312.399,-120.535 C 311.383,-122.819 312.65,-126.12 314.934,-127.136 C 317.218,-128.153 320.519,-126.885 321.535,-124.601 C 322.552,-122.317 321.284,-119.016 319,-118z"/>
+    </g>
+    <line style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x1="420" y1="-60" x2="680" y2="-280"/>
+    <line style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x1="359" y1="-66" x2="917" y2="-209"/>
+    <line style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x1="862" y1="-385" x2="1025" y2="-286"/>
+    <line style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x1="1016" y1="-403" x2="847" y2="-256"/>
+    <line style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #ff0000" x1="340" y1="0" x2="340" y2="-500"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="300" y="-500" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="300" y="-400" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="100" y="-300" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="200" y="-300" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="300" y="-300" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="100" y="-200" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="200" y="-200" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="300" y="-200" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="100" y="-100" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="200" y="-100" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="300" y="-100" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="400" y="-500" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="500" y="-500" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="600" y="-500" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="400" y="-400" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="500" y="-400" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="600" y="-400" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="400" y="-300" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="500" y="-300" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="600" y="-300" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="400" y="-200" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="500" y="-200" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="600" y="-200" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="400" y="-100" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="500" y="-100" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="600" y="-100" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="700" y="-500" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="800" y="-500" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="900" y="-500" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="700" y="-400" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="800" y="-400" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="900" y="-400" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="700" y="-300" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="800" y="-300" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="900" y="-300" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="700" y="-200" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="800" y="-200" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="900" y="-200" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="700" y="-100" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="800" y="-100" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="900" y="-100" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="1000" y="-500" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="1000" y="-400" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="1000" y="-300" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="1000" y="-200" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="1000" y="-100" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="100" y="-500" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="200" y="-500" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="100" y="-400" width="100" height="100" rx="0" ry="0"/>
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="200" y="-400" width="100" height="100" rx="0" ry="0"/>
+  </g>
+</svg>

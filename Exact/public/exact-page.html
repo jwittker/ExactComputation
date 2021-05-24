@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="pandoc">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">      <meta name="dcterms.date" content="2019-10-28">      <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>Example</title>
+    <style type="text/css">
+      code {
+        white-space: pre;
+      }
+    </style>
+            <style type="text/css">
+      pre > code.sourceCode { white-space: pre; position: relative; }
+      pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+      pre > code.sourceCode > span:empty { height: 1.2em; }
+      .sourceCode { overflow: visible; }
+      code.sourceCode > span { color: inherit; text-decoration: inherit; }
+      div.sourceCode { margin: 1em 0; }
+      pre.sourceCode { margin: 0; }
+      @media screen {
+      div.sourceCode { overflow: auto; }
+      }
+      @media print {
+      pre > code.sourceCode { white-space: pre-wrap; }
+      pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+      }
+      pre.numberSource code
+        { counter-reset: source-line 0; }
+      pre.numberSource code > span
+        { position: relative; left: -4em; counter-increment: source-line; }
+      pre.numberSource code > span > a:first-child::before
+        { content: counter(source-line);
+          position: relative; left: -1em; text-align: right; vertical-align: baseline;
+          border: none; display: inline-block;
+          -webkit-touch-callout: none; -webkit-user-select: none;
+          -khtml-user-select: none; -moz-user-select: none;
+          -ms-user-select: none; user-select: none;
+          padding: 0 4px; width: 4em;
+          color: #aaaaaa;
+        }
+      pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+      div.sourceCode
+        {   }
+      @media screen {
+      pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+      }
+      code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+      code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+      code span.at { color: #7d9029; } /* Attribute */
+      code span.bn { color: #40a070; } /* BaseN */
+      code span.bu { } /* BuiltIn */
+      code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+      code span.ch { color: #4070a0; } /* Char */
+      code span.cn { color: #880000; } /* Constant */
+      code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+      code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+      code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+      code span.dt { color: #902000; } /* DataType */
+      code span.dv { color: #40a070; } /* DecVal */
+      code span.er { color: #ff0000; font-weight: bold; } /* Error */
+      code span.ex { } /* Extension */
+      code span.fl { color: #40a070; } /* Float */
+      code span.fu { color: #06287e; } /* Function */
+      code span.im { } /* Import */
+      code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+      code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+      code span.op { color: #666666; } /* Operator */
+      code span.ot { color: #007020; } /* Other */
+      code span.pp { color: #bc7a00; } /* Preprocessor */
+      code span.sc { color: #4070a0; } /* SpecialChar */
+      code span.ss { color: #bb6688; } /* SpecialString */
+      code span.st { color: #4070a0; } /* String */
+      code span.va { color: #19177c; } /* Variable */
+      code span.vs { color: #4070a0; } /* VerbatimString */
+      code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+    </style>
+    
+    <link rel="stylesheet" href="support/css/page.css">
+    
+    <!-- MathJax config -->
+    <script>
+        window.MathJax = {
+            loader: {
+                load: ['[tex]/ams']
+            },
+            svg: {
+                minScale: .5,                  // smallest scaling factor to use
+                matchFontHeight: false,        // true to match ex-height of surrounding font
+                mtextInheritFont: false,       // true to make mtext elements use surrounding font
+                merrorInheritFont: true,       // true to make merror text use surrounding font
+                mathmlSpacing: false,          // true for MathML spacing rules, false for TeX rules
+                skipAttributes: {},            // RFDa and other attributes NOT to copy to the output
+                exFactor: .5,                  // default size of ex in em units
+                displayAlign: 'center',        // default for indentalign when set to 'auto'
+                displayIndent: '0',            // default for indentshift when set to 'auto'
+                fontCache: 'none',             // or 'global' or 'none'
+                localID: null,                 // ID to use for local font cache (for single equation processing)
+                internalSpeechTitles: true,    // insert <title> tags with speech content
+                titleID: 0                     // initial id number to use for aria-labeledby titles
+            },
+            tex: {
+                tags: 'ams',
+                packages: {
+                    '[+]': ['ams']
+                },
+                macros: {
+                    R: "{\\mathrm{{I}\\kern-.15em{R}}}",
+                    laplace: "{\\Delta}",
+                    grad: "{\\nabla}",
+                    T: "^{\\mathsf{T}}",
+
+                    norm: ['\\left\\Vert #1 \\right\\Vert', 1],
+                    iprod: ['\\left\\langle #1 \\right\\rangle', 1],
+                    vec: ['\\boldsymbol{\\mathbf{#1}}', 1],
+                    mat: ['\\boldsymbol{\\mathbf{#1}}', 1],
+                    set: ['\\mathcal{#1}', 1],
+                    func: ['\\mathrm{#1}', 1],
+                    trans: ['{#1}\\mkern-1mu^{\\mathsf{T}}', 1],
+                    matrix: ['\\begin{bmatrix} #1 \\end{bmatrix}', 1],
+                    vector: ['\\begin{pmatrix} #1 \\end{pmatrix}', 1],
+                    of: ['\\mkern{-2mu}\\left( #1 \\right\)', 1],
+                    diff: ['\\frac{\\mathrm{d}{#1}}{\\mathrm{d}{#2}}', 2],
+                    pdiff: ['\\frac{\\partial {#1}}{\\partial {#2}}', 2],
+
+                    vc: ['\\mathbf{#1}', 1],
+                    abs: ['\\lvert#1\\rvert', 1],
+                    norm: ['\\lVert#1\\rVert', 1],
+                    det: ['\\lvert#1\\rvert', 1],
+                    qt: ['\\hat{\\vc {#1}}', 1],
+                    mt: ['\\boldsymbol{#1}', 1],
+                    pt: ['\\boldsymbol{#1}', 1],
+                    textcolor: ['\\color{#1}', 1]
+                }
+            },
+            options: {
+                // disable menu
+                renderActions: {
+                    addMenu: [0, '', '']
+                },
+            }
+        };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async src="support/vendor/mathjax/tex-svg.js">
+    </script>
+
+    <script>
+      var socket = new WebSocket("ws://" + location.host + "/reload");
+      socket.onmessage = function (event) {
+        if (event.data.startsWith("reload!")) 
+          window.location.reload(true);
+      };
+    </script>
+
+            <link rel="stylesheet" href="custom.css">
+      </head>
+
+  <body class="document page" onload="initPage();">
+    
+    <header>
+              <h1>Example</h1>
+              </header>
+
+    
+<!-- body must not be indented or code blocks render badly -->
+<!-- The following line must be left aligned! -->
+<section id="notes---exact-computation---geometric-approach" class="slide level1">
+<h1>Notes - Exact Computation - Geometric Approach</h1>
+<div class="box columns definition">
+<h2 class="definition" id="topics">Topics</h2>
+<ol type="1">
+<li>Finite Resolution / Fixed Precision Geometry Finite Precision Line Geometry (a,b,c,d)</li>
+<li>Fat Geometry / Interval Geometry / Epsilon Geometry</li>
+<li>Topological Approaches</li>
+<li>Snap Rounding</li>
+</ol>
+</div>
+</section>
+<section id="introduction" class="slide level1">
+<h1>Introduction</h1>
+<p><a href="include/relative.md">#include</a></p>
+<p>This is just a simple run-of-the-mill document. Use it for exercises and everything else. This document also has access to the meta data in surrounding YAML files.</p>
+<p>The date is {{date}}.</p>
+<p>All structured data entries are:</p>
+<p>{{#structured}} - {{.}} {{/structured}}</p>
+<p>{{sometext}}</p>
+<p>This page is published via <code>rsync</code> to:</p>
+<pre><code>{{rsync-destination.host}}:{{rsync-destination.path}}</code></pre>
+<p>Syntax highlighting should be supported, even with the new bootstrap based styling.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- | Monadic version of list concatenation.</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ot">(&lt;++&gt;) ::</span> <span class="dt">Monad</span> m <span class="ot">=&gt;</span> m [a] <span class="ot">-&gt;</span> m [a] <span class="ot">-&gt;</span> m [a]</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>(<span class="op">&lt;++&gt;</span>) <span class="ot">=</span> liftM2 (<span class="op">++</span>)</span></code></pre></div>
+</section>
+<!-- The previous line must be left aligned! -->
+
+    <script src="support/vendor/js/jquery.min.js" type="text/javascript"></script>
+    <script src="support/vendor/js/lazyload.min.js" type="text/javascript"></script>
+    <script src="support/js/page.js"></script>
+
+            <script>
+      var lazyLoadInstance = new LazyLoad({
+        elements_selector: "img, video, iframe"
+      });
+    </script>
+  </body>
+  </html>

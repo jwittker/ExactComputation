@@ -1,0 +1,28 @@
+annotations:
+- public/exact-annot.json
+decks:
+- public/exact-deck.html
+- public/example-deck.html
+pages:
+- public/exact-page.html
+static: []
+css: []
+sources:
+- exact-annot.json
+- exact-deck.md
+- exact-page.md
+- example-deck.md
+handoutsPdf:
+- public/exact-handout.pdf
+- public/example-handout.pdf
+pagesPdf:
+- public/exact-page.pdf
+questions: []
+decksPdf:
+- public/exact-deck.pdf
+- public/example-deck.pdf
+recordings: []
+handouts:
+- public/exact-handout.html
+- public/example-handout.html
+times: []
