@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/PR-SVG-20010719/DTD/svg10.dtd">
+<svg width="31cm" height="16cm" viewBox="198 99 603 302" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <g id="Hintergrund">
+    <rect style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="200" y="100" width="600" height="300" rx="0" ry="0"/>
+    <line style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x1="400" y1="100" x2="400" y2="400"/>
+    <g>
+      <line style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x1="200" y1="200" x2="404" y2="220"/>
+      <path style="fill: #000000; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" fill-rule="evenodd" d="M 404 220 C 403.756,222.488 401.024,224.732 398.536,224.488 C 396.048,224.244 393.804,221.512 394.048,219.024 C 394.292,216.536 397.024,214.292 399.512,214.536 C 402,214.78 404.244,217.512 404,220z"/>
+    </g>
+    <g>
+      <line style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x1="200" y1="300" x2="404" y2="279"/>
+      <path style="fill: #000000; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" fill-rule="evenodd" d="M 404 279 C 404.256,281.487 402.025,284.23 399.538,284.486 C 397.051,284.742 394.309,282.511 394.053,280.024 C 393.797,277.537 396.027,274.794 398.514,274.538 C 401.001,274.282 403.744,276.513 404,279z"/>
+    </g>
+    <line style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x1="500" y1="250" x2="800" y2="280"/>
+    <text font-size="12.8" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:700" x="400" y="200">
+      <tspan x="400" y="200">A</tspan>
+    </text>
+    <text font-size="12.8" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:700" x="400" y="300">
+      <tspan x="400" y="300">B</tspan>
+    </text>
+    <line style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x1="800" y1="220" x2="500" y2="250"/>
+    <g>
+      <line style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x1="504" y1="251" x2="400" y2="220"/>
+      <path style="fill: #000000; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" fill-rule="evenodd" d="M 504 251 C 503.286,253.396 500.176,255.078 497.78,254.363 C 495.384,253.649 493.703,250.539 494.417,248.143 C 495.131,245.748 498.241,244.066 500.637,244.78 C 503.032,245.494 504.714,248.604 504,251z"/>
+    </g>
+    <line style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x1="400" y1="280" x2="500" y2="250"/>
+  </g>
+</svg>
